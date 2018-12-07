@@ -1,0 +1,13 @@
+Requisiti
+
+-lettura dati di pm10 e pm2.5
+-lettura posizione GPS 
+-lettura temperatura e pressione
+-frequenza di lettura nell'ordine dei secondi 1~10
+
+-storage dei dati per 6h
+-alimentazione a batteria durata >6h
+
+-consultazione dati real time
+-download selettivo
+-download intero contenuto della memoria
