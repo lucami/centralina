@@ -1,0 +1,19 @@
+{
+  "DEFAULT": 
+  {
+    "SOURCE": "/dev/ttyAMA0",
+    "FORMAT": "NMEA"
+  },
+ 
+  "TEST_NMEA": 
+  {
+    "SOURCE": "/temp/dummy_gps",
+    "FORMAT": "NMEA"
+  },
+
+  "TEST_JSON": 
+  {
+    "SOURCE": "/temp/dummy_gps",
+    "FORMAT": "JSON"
+  }
+}
