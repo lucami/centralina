@@ -1,6 +1,6 @@
 import json # https://jsonlint.com
 import configparser
-from GPS_Dummy import *
+from GPS_Communication import *
 
 class GPSFactory():
     def __init__(self, gps_source):
@@ -12,40 +12,49 @@ class GPSFactory():
             config = json.load(f)
 
         if gps_source == "DEFAULT":
-            mod_source = config['DEFAULT']['SOURCE']
-            mod_format = config['DEFAULT']['FORMAT']
-            print ("GPS CONF: default") 
+            self.mod_source = config['DEFAULT']['SOURCE']
+            self.mod_format = config['DEFAULT']['FORMAT']
+            #print ("GPS CONF: default") 
 
         if gps_source == "TEST_NMEA":
-            mod_source = config['TEST_NMEA']['SOURCE']
-            mod_format = config['TEST_NMEA']['FORMAT']
-            print ("GPS CONF: test nmea") 
+            self.mod_source = config['TEST_NMEA']['SOURCE']
+            self.mod_format = config['TEST_NMEA']['FORMAT']
+            #print ("GPS CONF: test nmea") 
 
         if gps_source == "TEST_JSON":
-            mod_source = config['TEST_JSON']['SOURCE']
-            mod_format = config['TEST_JSON']['FORMAT']
-            print ("GPS CONF: test json")
+            self.mod_source = config['TEST_JSON']['SOURCE']
+            self.mod_format = config['TEST_JSON']['FORMAT']
+            #print ("GPS CONF: test json")
         
     def build_gps(self):
-        
-        if "dummy" in self.mod_source and "NMEA" in self.mod_source:
+        dummy_nmea = None
+        if "dummy" in self.mod_source and "nmea" in self.mod_source:
+            #print("Creo istanza Dummy GPS")        
             dummy_nmea = GPS_Dummy_NMEA()
-            return dummy_nmea
-    
+            a=dummy_nmea.toString()
+        else:
+            print("Non riesco a creare Dummy GPS")        
+        return dummy_nmea
 
-g=GPSFactory("TEST_NMEA")
-dummy = g.build_gps()
+def test_gps_factory():
 
-s =dummy.get()
-print (s) 
-dummy.poll()
+    g=GPSFactory("TEST_NMEA")
+    dummy = g.build_gps()
 
-s =dummy.get()
-print (s) 
-dummy.poll()
+    if dummy is None:
+        print("Dummy is None")
 
-s =dummy.get()
-print (s) 
-dummy.poll()
+    dummy.toString()
+    s =dummy.get()
+    print (s) 
+    dummy.poll()
 
+    s =dummy.get()
+    print (s) 
+    dummy.poll()
 
+    s =dummy.get()
+    print (s) 
+    dummy.poll()
+
+test_gps_factory()

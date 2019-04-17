@@ -1,15 +1,12 @@
 class GPS_Communication():
-    @abstractmethod
     def __init__(self):
-        pass
-
-    @abstractmethod
-    def poll(self):
-        pass
+        raise NotImplementedError
     
-    @abstractmethod
+    def poll(self):
+        raise NotImplementedError
+    
     def get(self):
-        pass
+        raise NotImplementedError
 
 class GPS_SPI(GPS_Communication):
     def __init__(self):
@@ -42,21 +39,28 @@ class GPS_Daemon(GPS_Communication):
         pass
 
 class GPS_Dummy_NMEA(GPS_Communication):
+    
     def __init__(self):
-        print ("DUMMY NMEA Generator built!")
-        rmc_sentence = "$GPRMC,123519,A,4807.038,N,01131.000,E,022.4,084.4,230394,003.1,W*6A"
-        gga_sentence"$GPGGA,123519,4807.038,N,01131.000,E,1,08,0.9,545.4,M,46.9,M,,*47"
-        sentence=rmc_sentence
+        #print ("DUMMY NMEA Generator built!")
+        self.rmc_sentence = "$GPRMC,123519,A,4807.038,N,01131.000,E,022.4,084.4,230394,003.1,W*6A"
+        self.gga_sentence="$GPGGA,123519,4807.038,N,01131.000,E,1,08,0.9,545.4,M,46.9,M,,*47"
+        self.sentence=self.rmc_sentence
         pass
 
+    def toString(self):
+        str_ = "GPS_Dummy_NMEA"
+        print (str_)
+        return str_
+        
+
     def poll(self):
-        if "RMC" in sentence:
-            sentence = gga_sentence
-        else
-            sentence = rms_sentence
+        if "RMC" in self.sentence:
+            self.sentence = self.gga_sentence
+        else:
+            self.sentence = self.rmc_sentence
     
     def get(self):
-        return nmea
+        return self.sentence
 
 class GPS_Dummy_JSON(GPS_Communication):
     def __init__(self):
