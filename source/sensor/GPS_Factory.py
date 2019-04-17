@@ -5,28 +5,47 @@ from GPS_Dummy import *
 class GPSFactory():
     def __init__(self, gps_source):
         
+        self.mod_source=""
+        self.mod_format=""
+
         with open('gps_conf.json', 'r') as f:
             config = json.load(f)
 
         if gps_source == "DEFAULT":
-            gps_source = config['DEFAULT']['SOURCE']
-            gps_format = config['DEFAULT']['FORMAT']
+            mod_source = config['DEFAULT']['SOURCE']
+            mod_format = config['DEFAULT']['FORMAT']
             print ("GPS CONF: default") 
 
         if gps_source == "TEST_NMEA":
-            gps_source = config['TEST_NMEA']['SOURCE']
-            gps_format = config['TEST_NMEA']['FORMAT']
+            mod_source = config['TEST_NMEA']['SOURCE']
+            mod_format = config['TEST_NMEA']['FORMAT']
             print ("GPS CONF: test nmea") 
 
         if gps_source == "TEST_JSON":
-            gps_source = config['TEST_JSON']['SOURCE']
-            gps_format = config['TEST_JSON']['FORMAT']
+            mod_source = config['TEST_JSON']['SOURCE']
+            mod_format = config['TEST_JSON']['FORMAT']
             print ("GPS CONF: test json")
+        
+    def build_gps(self):
+        
+        if "dummy" in self.mod_source and "NMEA" in self.mod_source:
+            dummy_nmea = GPS_Dummy_NMEA()
+            return dummy_nmea
+    
 
+g=GPSFactory("TEST_NMEA")
+dummy = g.build_gps()
 
+s =dummy.get()
+print (s) 
+dummy.poll()
 
-g=GPSFactory("TEST_JSON")
+s =dummy.get()
+print (s) 
+dummy.poll()
 
-
+s =dummy.get()
+print (s) 
+dummy.poll()
 
 
