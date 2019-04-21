@@ -10,6 +10,8 @@ class GPSFactory():
         
         self.mod_source=""
         self.mod_format=""
+        self.latitude = None
+        self.longitude = None
 
         with open('gps_conf.json', 'r') as f:
             config = json.load(f)
@@ -39,11 +41,11 @@ class GPSFactory():
             print("Non riesco a creare Dummy GPS")        
         return dummy_nmea
 
-    def build_parser(self):
+    def build_parser(self, latitude, longitude):
         self.parser = None
         if "nmea" in self.mod_source.lower():
             #print("Creo istanza Dummy Parser")        
-            self.parser = GPS_NMEA_parser()
+            self.parser = GPS_NMEA_parser(latitude, longitude)
         else:
             print("Non riesco a creare NMEA Parser")        
         return self.parser
@@ -51,40 +53,42 @@ class GPSFactory():
     def build_latitude(self):
         self.latitude = None
         self.latitude = Latitude()
+        return self.latitude
 
     def build_longitude(self):
         self.longitude = None
         self.longitude = Longitude()
-
+        return self.longitude
 
 
 def test_gps_factory():
 
     g=GPSFactory("TEST_NMEA")
     dummy = g.build_gps()
-    p=g.build_parser()
     lat = g.build_latitude()
     lon = g.build_longitude()
 
+    p=g.build_parser(lat, lon)
 
     if dummy is None:
         print("Dummy is None")
 
     dummy.toString()
     s =dummy.get()
-    print (s) 
+    #print (s) 
     p.parse(s)
-    
+    print(lat.get())    
+    print(lon.get())    
     
     dummy.poll()
 
     s =dummy.get()
-    print (s) 
+    #print (s) 
     p.parse(s)
     dummy.poll()
 
     s =dummy.get()
-    print (s) 
+    #print (s) 
     p.parse(s)
     dummy.poll()
 

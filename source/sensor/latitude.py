@@ -7,4 +7,5 @@ class Latitude():
 
     def get(self):
         return self.lat
-    
+    def toString(self):
+        print("Latitude()")
