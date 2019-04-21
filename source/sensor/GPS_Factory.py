@@ -51,6 +51,7 @@ class GPSFactory():
     def build_latitude(self):
         self.latitude = None
         self.latitude = Latitude()
+
     def build_longitude(self):
         self.longitude = None
         self.longitude = Longitude()
