@@ -1,6 +1,6 @@
 class Longitude():
     def __init__(self):
-        print ("longitude")
+        self.lon =''
 
     def set(self, value):
         self.lon = value

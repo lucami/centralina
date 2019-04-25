@@ -8,11 +8,11 @@ from longitude import *
 class GPSFactory():
     def __init__(self, gps_source):
         
+        self.GPS_interfaces = {}
+
         self.mod_source=""
         self.mod_format=""
-        self.latitude = None
-        self.longitude = None
-
+        
         with open('gps_conf.json', 'r') as f:
             config = json.load(f)
 
@@ -39,27 +39,39 @@ class GPSFactory():
             a=dummy_nmea.toString()
         else:
             print("Non riesco a creare Dummy GPS")        
+        
+        self.GPS_interfaces.update({'GPS_Communication': dummy_nmea})
         return dummy_nmea
 
     def build_parser(self, latitude, longitude):
-        self.parser = None
+        parser = None
         if "nmea" in self.mod_source.lower():
             #print("Creo istanza Dummy Parser")        
             self.parser = GPS_NMEA_parser(latitude, longitude)
         else:
             print("Non riesco a creare NMEA Parser")        
+        
+        self.GPS_interfaces.update({'parser': parser})
+
         return self.parser
 
     def build_latitude(self):
-        self.latitude = None
-        self.latitude = Latitude()
-        return self.latitude
+        latitude = None
+        latitude = Latitude()
+
+        self.GPS_interfaces.update({'latitude': latitude})
+        return latitude
 
     def build_longitude(self):
-        self.longitude = None
-        self.longitude = Longitude()
-        return self.longitude
+        longitude = None
+        longitude = Longitude()
+        
+        self.GPS_interfaces.update({'longitude': longitude})
 
+        return longitude
+
+    def get_builds(self):
+        return (self.GPS_interfaces)
 
 def test_gps_factory():
 
@@ -73,12 +85,9 @@ def test_gps_factory():
     if dummy is None:
         print("Dummy is None")
 
-    dummy.toString()
     s =dummy.get()
     #print (s) 
     p.parse(s)
-    print(lat.get())    
-    print(lon.get())    
     
     dummy.poll()
 
@@ -92,4 +101,12 @@ def test_gps_factory():
     p.parse(s)
     dummy.poll()
 
+    print(lat.get())
+    print(lon.get())
+
+    dic = g.get_builds()
+    dic['GPS_Communication'].poll()
+    s=dic['GPS_Communication'].get()
+    print(s)
+    
 test_gps_factory()

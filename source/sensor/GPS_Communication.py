@@ -49,7 +49,7 @@ class GPS_Dummy_NMEA(GPS_Communication):
 
     def toString(self):
         str_ = "GPS_Dummy_NMEA"
-        print (str_)
+        #print (str_)
         return str_
         
 

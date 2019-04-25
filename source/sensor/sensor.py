@@ -1,3 +1,9 @@
-class sensor():
+class Abstract_Sensor():
     def __init__(self):
-        print "sensor"
+        raise NotImplementedError
+
+    def kick(self):
+        raise NotImplementedError
+
+class GPS_Sensor(Abstract_Sensor):
+	def __init__(self)

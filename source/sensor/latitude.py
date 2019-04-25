@@ -1,11 +1,12 @@
 class Latitude():
     def __init__(self):
-        print ("longitude")
+        self.lat =''
 
     def set(self, value):
         self.lat = value
 
     def get(self):
         return self.lat
+
     def toString(self):
-        print("Latitude()")
+        return "Latitude()"

@@ -20,4 +20,3 @@ class GPS_NMEA_parser(GPS_Parser):
     def parse(self, sentence):
         if "rmc" in sentence.lower():
             self.parse_rmc(sentence.lower())
-    
