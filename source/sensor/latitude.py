@@ -1,9 +1,16 @@
-class Latitude():
+from observer import *
+
+
+class Latitude(Subscriber):
     def __init__(self):
         self.lat =''
+        self.latitude_pos = 2
+        Subscriber.__init__(self, "Latitude")
+        pass
 
-    def set(self, value):
-        self.lat = value
+    def set(self, sentence):
+        split =sentence.split(',') 
+        print (split)
 
     def get(self):
         return self.lat

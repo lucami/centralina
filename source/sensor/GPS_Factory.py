@@ -4,7 +4,9 @@ from GPS_Communication import *
 from GPS_Parser import *
 from latitude import *
 from longitude import *
+from observer import *
 
+#urir-hlmp-gjrl-lowa
 class GPSFactory():
     def __init__(self, gps_source):
         
@@ -32,26 +34,30 @@ class GPSFactory():
             #print ("GPS CONF: test json")
         
     def build_gps(self):
-        dummy_nmea = None
+    
+        self.gps_comm = None
+        
+
         if "dummy" in self.mod_source and "nmea" in self.mod_source:
             #print("Creo istanza Dummy GPS")        
-            dummy_nmea = GPS_Dummy_NMEA()
-            a=dummy_nmea.toString()
+            self.gps_comm = GPS_Dummy_NMEA()
+            a=self.gps_comm.toString()
         else:
             print("Non riesco a creare Dummy GPS")        
         
-        self.GPS_interfaces.update({'GPS_Communication': dummy_nmea})
-        return dummy_nmea
+        self.GPS_interfaces.update({'GPS_Communication': self.gps_comm})
+        return self.gps_comm
 
-    def build_parser(self, latitude, longitude):
-        parser = None
+    def build_parser(self):
+        self.parser = None
+        
         if "nmea" in self.mod_source.lower():
             #print("Creo istanza Dummy Parser")        
-            self.parser = GPS_NMEA_parser(latitude, longitude)
+            self.parser = GPS_NMEA_parser()
         else:
             print("Non riesco a creare NMEA Parser")        
         
-        self.GPS_interfaces.update({'parser': parser})
+        self.GPS_interfaces.update({'parser': self.parser})
 
         return self.parser
 
@@ -73,40 +79,47 @@ class GPSFactory():
     def get_builds(self):
         return (self.GPS_interfaces)
 
+
 def test_gps_factory():
 
     g=GPSFactory("TEST_NMEA")
-    dummy = g.build_gps()
-    lat = g.build_latitude()
-    lon = g.build_longitude()
 
-    p=g.build_parser(lat, lon)
+    gps_device = g.build_gps()
+    parser=g.build_parser()
+    latitude = g.build_latitude()
+    longitude = g.build_longitude()   
 
-    if dummy is None:
+    if gps_device is None:
         print("Dummy is None")
 
-    s =dummy.get()
-    #print (s) 
-    p.parse(s)
+    gps_device.register(parser, parser.parse)
     
-    dummy.poll()
+    parser.register(longitude, longitude.set)
+    parser.register(latitude, latitude.set)
 
-    s =dummy.get()
-    #print (s) 
-    p.parse(s)
-    dummy.poll()
+    gps_device.get()
 
-    s =dummy.get()
-    #print (s) 
-    p.parse(s)
-    dummy.poll()
+    print(longitude.get())
+    print(latitude.get())
 
-    print(lat.get())
-    print(lon.get())
+    gps_device.poll()
+    gps_device.get()
 
-    dic = g.get_builds()
-    dic['GPS_Communication'].poll()
-    s=dic['GPS_Communication'].get()
-    print(s)
+    print(longitude.get())
+    print(latitude.get())
+
+    gps_device.poll()
+    gps_device.get()
     
+    print(longitude.get())
+    print(latitude.get())
+
+    gps_device.poll()
+    gps_device.get()
+
+    print(longitude.get())
+    print(latitude.get())
+
 test_gps_factory()
+
+
