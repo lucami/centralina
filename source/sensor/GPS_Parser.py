@@ -1,6 +1,7 @@
 from observer import *
+from GPS_Mediator import *
 
-class GPS_Parser(Subscriber, Publisher):
+class GPS_Parser(Subscriber, Colleague):
     def __init__(self):
         raise NotImplementedError
     def parse_sentence(self):
@@ -9,10 +10,10 @@ class GPS_Parser(Subscriber, Publisher):
 
 
 class GPS_NMEA_parser(GPS_Parser):
-    def __init__(self):
+    def __init__(self, mediator, identity):
         self.nmea_sentence=""
         Subscriber.__init__(self, "Parser")
-        Publisher.__init__(self)
+        Colleague.__init__(self,mediator, identity)
         
     def parse_rmc(self, sentence):
         rmc_token = sentence.split(',')
@@ -43,7 +44,7 @@ class GPS_NMEA_parser(GPS_Parser):
 
     def parse(self, sentence):
 
-        #print(sentence)
+        print("parser: {}".format(sentence))
 
         try:
             GPS_NMEA_parser.checksum_validator(self, sentence)
@@ -52,5 +53,12 @@ class GPS_NMEA_parser(GPS_Parser):
 
         if "rmc" in sentence.lower():
             self.parse_rmc(sentence.lower())
-            Publisher.dispatch(self, sentence)
 
+        self._mediator.distribute(self, sentence)
+
+    def send(self, message):
+        print("Message '" + message + "' sent by Colleague " + str(self._id))
+        self._mediator.distribute(self, message)
+    
+    def receive(self, message):
+        print("Message '" + message + "' received by Colleague " + str(self._id))

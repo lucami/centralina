@@ -5,6 +5,7 @@ from GPS_Parser import *
 from latitude import *
 from longitude import *
 from observer import *
+from GPS_Mediator import *
 
 #urir-hlmp-gjrl-lowa
 class GPSFactory():
@@ -48,12 +49,12 @@ class GPSFactory():
         self.GPS_interfaces.update({'GPS_Communication': self.gps_comm})
         return self.gps_comm
 
-    def build_parser(self):
+    def build_parser(self,mediator, colleague_id):
         self.parser = None
         
         if "nmea" in self.mod_source.lower():
             #print("Creo istanza Dummy Parser")        
-            self.parser = GPS_NMEA_parser()
+            self.parser = GPS_NMEA_parser(mediator, colleague_id)
         else:
             print("Non riesco a creare NMEA Parser")        
         
@@ -61,16 +62,16 @@ class GPSFactory():
 
         return self.parser
 
-    def build_latitude(self):
+    def build_latitude(self,mediator, colleague_id):
         latitude = None
-        latitude = Latitude()
+        latitude = Latitude(mediator, colleague_id)
 
         self.GPS_interfaces.update({'latitude': latitude})
         return latitude
 
-    def build_longitude(self):
+    def build_longitude(self,mediator, colleague_id):
         longitude = None
-        longitude = Longitude()
+        longitude = Longitude(mediator, colleague_id)
         
         self.GPS_interfaces.update({'longitude': longitude})
 
@@ -84,41 +85,28 @@ def test_gps_factory():
 
     g=GPSFactory("TEST_NMEA")
 
+    mediator = ConcreteMediator()
+
     gps_device = g.build_gps()
-    parser=g.build_parser()
-    latitude = g.build_latitude()
-    longitude = g.build_longitude()   
+    parser=g.build_parser(mediator, "parser")
+
+    latitude = g.build_latitude(mediator, "latitude")
+    longitude = g.build_longitude(mediator, "longitude")  
+
+    mediator.add(parser)
+    mediator.add(latitude)
+    mediator.add(longitude)
+    
 
     if gps_device is None:
         print("Dummy is None")
 
     gps_device.register(parser, parser.parse)
     
-    parser.register(longitude, longitude.set)
-    parser.register(latitude, latitude.set)
-
     gps_device.get()
-
-    print(longitude.get())
-    print(latitude.get())
-
     gps_device.poll()
     gps_device.get()
-
-    print(longitude.get())
-    print(latitude.get())
-
-    gps_device.poll()
-    gps_device.get()
-    
-    print(longitude.get())
-    print(latitude.get())
-
-    gps_device.poll()
-    gps_device.get()
-
-    print(longitude.get())
-    print(latitude.get())
+   
 
 test_gps_factory()
 
