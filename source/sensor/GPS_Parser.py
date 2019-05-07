@@ -62,3 +62,4 @@ class GPS_NMEA_parser(GPS_Parser):
     
     def receive(self, message):
         print("Message '" + message + "' received by Colleague " + str(self._id))
+
