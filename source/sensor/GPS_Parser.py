@@ -34,7 +34,7 @@ class GPS_NMEA_parser(GPS_Parser):
             for i in s:
                 calc_cksum ^= ord(i)
 
-        cmp_val = hex(calc_cksum)[2:].upper()
+        cmp_val = hex(calc_cksum)[2:].upper() 
         #print("calc_cksum: {}".format(cmp_val))
 
         if cmp_val.strip('\n') == cksum.strip('\n'):

@@ -3,7 +3,7 @@ from GPS_Mediator import *
 class Latitude(Colleague):
     def __init__(self, mediator, identity):
         self.lat =''
-        self.latitude_pos = 2
+        self.latitude_pos = 2 
         super().__init__(mediator, identity)
         pass
 

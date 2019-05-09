@@ -1,11 +1,11 @@
 
 class Subscriber:
     def __init__(self, name):
-        self.name = name
+        self.name = name 
 
     def update(self, message):
         print('{} ricevuto messaggio "{}"'.format(self.name, message))
-
+ 
         
 class Publisher:
     def __init__(self):

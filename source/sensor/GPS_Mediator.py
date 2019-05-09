@@ -1,7 +1,7 @@
 #
 # Python Design Patterns: Mediator
 # Author: Jakub Vojvoda [github.com/JakubVojvoda]
-# 2016
+# 2016 
 #
 # Source code is licensed under MIT License
 # (for more details see LICENSE)

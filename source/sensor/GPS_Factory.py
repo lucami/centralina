@@ -36,7 +36,7 @@ class GPSFactory():
         
     def build_gps(self):
     
-        self.gps_comm = None
+        self.gps_comm = None 
         
 
         if "dummy" in self.mod_source and "nmea" in self.mod_source:
