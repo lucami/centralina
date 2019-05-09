@@ -2,8 +2,8 @@ from observer import *
 
 class GPS_Communication(Publisher):
     def __init__(self):
-        raise NotImplementedError 
-    
+        raise NotImplementedError
+     
     def poll(self):
         raise NotImplementedError
     

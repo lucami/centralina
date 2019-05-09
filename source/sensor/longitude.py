@@ -1,23 +1,27 @@
-from GPS_Mediator import *
+from observer import *
 
-class Longitude(Colleague):
-    def __init__(self, mediator, identity):
-        self.lon =''
-        self.longitude_pos = 1 
-        super().__init__(mediator, identity)
 
-    def set(self, value):
-        self.lon = value
+class Longitude(Subscriber):
+    def __init__(self):
+        self.lon ='' 
+        self.E_W = ''
+        self.longitude_pos = 5
+        self.E_W_pos = 6
+        Subscriber.__init__(self, "Longitude")
+        pass
+
+    def set(self, sentence):
+        split =sentence.split(',') 
+        self.lon = split[self.longitude_pos]
+        self.E_W = split[self.E_W_pos]
+
+        print(self.lon)
+        print(self.E_W)
+        
+        #print (split)
 
     def get(self):
         return self.lon
-    
+
     def toString(self):
         return "Longitude()"
-
-    def send(self, message):
-        print("Message '" + message + "' sent by Colleague " + str(self._id))
-        self._mediator.distribute(self, message)
-
-    def receive(self, message):
-        print("Message '" + message + "' received by Colleague " + str(self._id)) 
