@@ -15,8 +15,8 @@ class Longitude(Subscriber):
         self.lon = split[self.longitude_pos]
         self.E_W = split[self.E_W_pos]
 
-        print(self.lon)
-        print(self.E_W)
+        #print(self.lon)
+        #print(self.E_W)
         
         #print (split)
 

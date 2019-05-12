@@ -1,4 +1,5 @@
 from observer import *
+import re
 
 class GPS_Parser(Subscriber, Publisher): 
     def __init__(self):
@@ -73,14 +74,18 @@ class RMC_parser(Publisher, Subscriber):
         Publisher.__init__(self)
         Subscriber.__init__(self, "RMC_parser")
         self.rmc_sentence = ""
+        self.time_position = 1
+        self.coordinate_regex = '\A\d{3,5}\.\d{2,3}'
 
     def parse_rmc(self, sentence):
 
-        if self.check_all(sentence) is True:
-            #split = sentence.split(',')
-            #print ("{} - {}".format(len(split), split))
+        if "RMC" in sentence:
 
-            Publisher.dispatch(self, sentence)
+            if self.check_all(sentence) is True:
+                #split = sentence.split(',')
+                #print ("{} - {}".format(len(split), split))
+
+                Publisher.dispatch(self, sentence)
         
 
     def check_all(self, sentence):
@@ -93,9 +98,7 @@ class RMC_parser(Publisher, Subscriber):
         check_val &= self.check_lon(sentence)
         check_val &= self.check_speed(sentence)
         check_val &= self.check_angle(sentence)
-        check_val &= self.check_date(sentence)
         check_val &= self.check_mag_var(sentence)
-
         return check_val
 
     def check_gprmc(self, sentence):
@@ -107,20 +110,87 @@ class RMC_parser(Publisher, Subscriber):
         return rval
         
     def check_time(self, sentence):
-        return True 
+        rval = True
+
+        split=sentence.split(',')
+        time =  split[1]
+        
+        if len(time) != 6:
+            rval = False
+
+        h = int(time[:2])
+        m = int(time[2:4])
+        s = int(time[4:6])
+        
+        if h < 0 and h > 24:
+            rval = False
+        if m < 0 and m > 60:
+            rval = False
+        if s < 0 and s > 60:
+            rval = False
+        return rval
+
     def check_date(self, sentence):
-        return True
+        rval = True
+
+        split=sentence.split(',')
+        date =  split[9]
+
+        if len(date) != 6:
+            rval = False
+
+        g = int(date[0:2])
+        m = int(date[2:4])
+        a = int(date[4:6])
+        
+        if g < 1 and g > 31:
+            rval = False
+        if m < 1 and m > 12:
+            rval = False
+        if a < 0 and a > 99:
+            rval = False
+
+        return rval
+
     def check_status(self, sentence):
-        return True
+        rval = True
+        split=sentence.split(',')
+        flag =  split[2]
+        direction = split[4]
+        
+        if 'A' in flag:
+            rval = True
+        else:
+            rval = False
+        return rval
+
     def check_lat(self, sentence):
-        return True
+        rval = True
+        split=sentence.split(',')
+        lat =  split[3]
+        direction = split[4]
+
+        if re.fullmatch(self.coordinate_regex, lat) == None and ( direction is 'N' or direction is 'S'):
+            rval = False
+        else:
+            rval = True
+        return rval
+        
     def check_lon(self, sentence):
-        return True
+        rval = True
+        split=sentence.split(',')
+        lat =  split[5]
+        direction = split[6]
+
+        if re.fullmatch(self.coordinate_regex, lat) == None and ( direction is 'E' or direction is 'W'):
+            rval = False
+        else:
+            rval = True
+        return rval
+
     def check_speed(self, sentence):
         return True
     def check_angle(self, sentence):
-        return True
-    def check_date(self, sentence):
         return True
     def check_mag_var(self, sentence):
         return True

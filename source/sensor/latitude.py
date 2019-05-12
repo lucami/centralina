@@ -15,8 +15,8 @@ class Latitude(Subscriber):
         self.lat = split[self.latitude_pos]
         self.N_S = split[self.N_S_pos]
 
-        print(self.lat)
-        print(self.N_S)
+        #print(self.lat)
+        #print(self.N_S)
         
         #print (split)
 
