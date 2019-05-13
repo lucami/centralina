@@ -17,7 +17,7 @@ class GPSFactory():
         self.mod_source=""
         self.mod_format=""
         
-        with open('gps_conf.json', 'r') as f:
+        with open('./sensor/gps_conf.json', 'r') as f:
             config = json.load(f)
 
         if gps_source == "DEFAULT":
@@ -145,6 +145,27 @@ def test_gps_factory():
     
     date.get()
 
-test_gps_factory()
+def gps_factory(gps_type):
+
+    g=GPSFactory(gps_type)
+
+    gps_device = g.build_gps()
+    parser,rmc_parser, gga_parser=g.build_parser()
+    latitude = g.build_latitude()
+    longitude = g.build_longitude()   
+    time = g.build_time()
+    date = g.build_date()
+
+    gps_device.register(parser, parser.parse)
+    
+    parser.register(rmc_parser, rmc_parser.parse_rmc)
+    parser.register(gga_parser, gga_parser.parse_gga)
+
+    rmc_parser.register(latitude, latitude.set)
+    rmc_parser.register(longitude, longitude.set)
+    rmc_parser.register(time, time.set)
+    rmc_parser.register(date, date.set)
+
+#test_gps_factory()
 
 
