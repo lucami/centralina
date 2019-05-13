@@ -6,6 +6,7 @@ from latitude import *
 from longitude import *
 from observer import *
 from GPS_Time import *
+from GPS_Date import *
 
 #urir-hlmp-gjrl-lowa
 class GPSFactory():
@@ -85,9 +86,14 @@ class GPSFactory():
     def build_time(self):
         time = Time()
         self.GPS_interfaces.update({'time': time})
-
+    
         return time
 
+    def build_date(self):
+        date = Date()
+        self.GPS_interfaces.update({'date': date})
+    
+        return date
 
 def test_gps_factory():
 
@@ -98,6 +104,7 @@ def test_gps_factory():
     latitude = g.build_latitude()
     longitude = g.build_longitude()   
     time = g.build_time()
+    date = g.build_date()
 
     if gps_device is None:
         print("Dummy is None")
@@ -110,30 +117,33 @@ def test_gps_factory():
     rmc_parser.register(latitude, latitude.set)
     rmc_parser.register(longitude, longitude.set)
     rmc_parser.register(time, time.set)
+    rmc_parser.register(date, date.set)
+    
+    gps_device.get()
+    gps_device.poll()
+
+    #print(latitude.get())
+    #print(longitude.get())
 
     gps_device.get()
     gps_device.poll()
 
-    print(latitude.get())
-    print(longitude.get())
+    #print(latitude.get())
+    #print(longitude.get())
 
     gps_device.get()
     gps_device.poll()
 
-    print(latitude.get())
-    print(longitude.get())
+    #print(latitude.get())
+    #print(longitude.get())
 
     gps_device.get()
     gps_device.poll()
 
-    print(latitude.get())
-    print(longitude.get())
-
-    gps_device.get()
-    gps_device.poll()
-
-    print(latitude.get())
-    print(longitude.get())
+    #print(latitude.get())
+    #print(longitude.get())
+    
+    date.get()
 
 test_gps_factory()
 
