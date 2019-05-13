@@ -165,7 +165,7 @@ def gps_factory(gps_type):
     rmc_parser.register(longitude, longitude.set)
     rmc_parser.register(time, time.set)
     rmc_parser.register(date, date.set)
-
+    return g
 #test_gps_factory()
 
 
