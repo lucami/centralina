@@ -1,6 +1,9 @@
 from observer import *
+import sys
+sys.path.insert(0,'../')
+from kick import *
 
-class GPS_Communication(Publisher):
+class GPS_Communication(Publisher, kicker):
     def __init__(self):
         raise NotImplementedError
      
@@ -50,6 +53,8 @@ class GPS_Dummy_NMEA(GPS_Communication):
 
         #inizializzazione parametri di Publisher
         Publisher.__init__(self)
+        kicker.__init(self)
+
         pass
 
     def toString(self):
@@ -68,6 +73,12 @@ class GPS_Dummy_NMEA(GPS_Communication):
 
         Publisher.dispatch(self, self.sentence)
 
+    def kick(self):
+        if "RMC" in self.sentence:
+            self.sentence = self.gga_sentence
+        else:
+            self.sentence = self.rmc_sentence
+        Publisher.dispatch(self, self.sentence)
         
 
 class GPS_Dummy_JSON(GPS_Communication):
