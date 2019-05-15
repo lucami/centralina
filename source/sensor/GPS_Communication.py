@@ -53,7 +53,7 @@ class GPS_Dummy_NMEA(GPS_Communication):
 
         #inizializzazione parametri di Publisher
         Publisher.__init__(self)
-        kicker.__init(self)
+        kicker.__init__(self)
 
         pass
 
@@ -78,6 +78,7 @@ class GPS_Dummy_NMEA(GPS_Communication):
             self.sentence = self.gga_sentence
         else:
             self.sentence = self.rmc_sentence
+        print("Communication kicked")
         Publisher.dispatch(self, self.sentence)
         
 
