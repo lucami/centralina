@@ -21,7 +21,8 @@ class Longitude(Subscriber):
         #print (split)
 
     def get(self):
-        return self.lon
+        return self.lon + " " + self.E_W
+
 
     def toString(self):
         return "Longitude()"

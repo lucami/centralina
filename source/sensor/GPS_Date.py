@@ -3,7 +3,7 @@ from observer import *
 
 class Date(Subscriber):
     def __init__(self):
-        self.d ='' 
+        self.d = '' 
         self.m = ''
         self.y = ''
        
@@ -30,7 +30,7 @@ class Date(Subscriber):
             self.y = y
     
     def get(self):
-        print ("d:{} m:{} y:{}".format(self.d,self.m,self.y))
+        return ("d:{} m:{} y:{}".format(self.d,self.m,self.y))
 
     def toString(self):
         return "Date()"

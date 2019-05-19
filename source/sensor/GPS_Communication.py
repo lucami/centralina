@@ -3,7 +3,7 @@ import sys
 sys.path.insert(0,'../')
 from kick import *
 
-class GPS_Communication(Publisher, kicker):
+class GPS_Communication(Publisher):
     def __init__(self):
         raise NotImplementedError
      
@@ -73,12 +73,11 @@ class GPS_Dummy_NMEA(GPS_Communication):
 
         Publisher.dispatch(self, self.sentence)
 
-    def kick(self):
+    def execute(self):
         if "RMC" in self.sentence:
             self.sentence = self.gga_sentence
         else:
             self.sentence = self.rmc_sentence
-        print("Communication kicked")
         Publisher.dispatch(self, self.sentence)
         
 

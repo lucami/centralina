@@ -3,7 +3,7 @@ from observer import *
 
 class Time(Subscriber):
     def __init__(self):
-        self.h ='' 
+        self.h = '' 
         self.m = ''
         self.s = ''
        
@@ -30,7 +30,7 @@ class Time(Subscriber):
             self.s = s
     
     def get(self):
-        print ("h:{} m:{} s:{}".format(self.h,self.m,self.s))
+        return ("h:{} m:{} s:{}".format(self.h,self.m,self.s))
 
     def toString(self):
-        return "Longitude()"
+        return "Time()"

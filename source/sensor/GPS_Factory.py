@@ -7,6 +7,7 @@ from longitude import *
 from observer import *
 from GPS_Time import *
 from GPS_Date import *
+from GPS_Quality import *
 
 #urir-hlmp-gjrl-lowa
 class GPSFactory():
@@ -68,16 +69,13 @@ class GPSFactory():
     def build_latitude(self):
         latitude = None
         latitude = Latitude()
-
         self.GPS_interfaces.update({'latitude': latitude})
         return latitude
 
     def build_longitude(self):
         longitude = None
         longitude = Longitude()
-        
         self.GPS_interfaces.update({'longitude': longitude})
-
         return longitude
 
     def get_builds(self):
@@ -86,14 +84,17 @@ class GPSFactory():
     def build_time(self):
         time = Time()
         self.GPS_interfaces.update({'time': time})
-    
         return time
 
     def build_date(self):
         date = Date()
         self.GPS_interfaces.update({'date': date})
-    
         return date
+
+    def build_quality(self):
+        q = GPS_Quality()
+        self.GPS_interfaces.update({'quality': q})
+        return q
 
 def test_gps_factory():
 
@@ -105,6 +106,7 @@ def test_gps_factory():
     longitude = g.build_longitude()   
     time = g.build_time()
     date = g.build_date()
+    q = g.quality()
 
     if gps_device is None:
         print("Dummy is None")
@@ -118,7 +120,7 @@ def test_gps_factory():
     rmc_parser.register(longitude, longitude.set)
     rmc_parser.register(time, time.set)
     rmc_parser.register(date, date.set)
-    
+    rmc_parser.register(q, q.set)
     gps_device.get()
     gps_device.poll()
 
@@ -155,6 +157,8 @@ def gps_factory(gps_type):
     longitude = g.build_longitude()   
     time = g.build_time()
     date = g.build_date()
+    q = g.quality()
+
 
     gps_device.register(parser, parser.parse)
     
@@ -165,6 +169,8 @@ def gps_factory(gps_type):
     rmc_parser.register(longitude, longitude.set)
     rmc_parser.register(time, time.set)
     rmc_parser.register(date, date.set)
+    rmc_parser.register(q, q.set)
+
     return g
 #test_gps_factory()
 
