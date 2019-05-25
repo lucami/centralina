@@ -33,11 +33,7 @@ class GPS_Facade(kicker):
 
 	def get_position(self):
 		return self.latitude.get() + ";" + self.longitude.get()
-
 	def get_time_date(self):
 		return self.time.get()+ ";" + self.date.get()
-		#return self.date.get()
-		
-
 	def get_validity(self):
 		return self.q.get()

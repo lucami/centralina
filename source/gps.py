@@ -13,11 +13,16 @@ dummy = kicker()
 
 s.add_task(facade, "facade")
 s.add_task(dummy, "Dummy")
-
+i=0
 while True:
-	time.sleep(2)
-	s.run()
-	print(facade.get_position())
-	print(facade.get_time_date())
-	print(facade.get_validity())
-	print("")
+    i=i+1
+    time.sleep(2)
+    s.run()
+    print(facade.get_position())
+    print(facade.get_time_date())
+    print(facade.get_validity())
+    if i == 4:
+        s.remove_task("Dummy")
+    if i == 7:
+        s.add_task(dummy, "Dummy")
+    print("")
