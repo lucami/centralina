@@ -8,7 +8,8 @@ from GPS_Facade import *
 
 
 s = Scheduler("task scheduler")
-facade = GPS_Facade("TEST_NMEA")
+#facade = GPS_Facade("TEST_NMEA")
+facade = GPS_Facade("DEFAULT")
 dummy = kicker()
 
 s.add_task(facade, "facade")

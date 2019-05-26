@@ -39,14 +39,17 @@ class GPSFactory():
     def build_gps(self):
     
         self.gps_comm = None
-        
-
+       
         if "dummy" in self.mod_source and "nmea" in self.mod_source:
             #print("Creo istanza Dummy GPS")        
             self.gps_comm = GPS_Dummy_NMEA()
             a=self.gps_comm.toString()
+        elif "/dev/ttyS4" in self.mod_source and "NMEA" in self.mod_format:
+            #print ("Creo GPS Serial")
+            self.gps_comm = GPS_Serial()
+            a=self.gps_comm.toString()
         else:
-            print("Non riesco a creare Dummy GPS")        
+            print("GPS Configuration ERROR")        
         
         self.GPS_interfaces.update({'GPS_Communication': self.gps_comm})
         return self.gps_comm
@@ -54,8 +57,8 @@ class GPSFactory():
     def build_parser(self):
         self.parser = None
         
-        if "nmea" in self.mod_source.lower():
-            #print("Creo istanza Dummy Parser")        
+        if "nmea" in self.mod_source.lower() or "NMEA" in self.mod_format:
+            print("Creo istanza NMEA Parser")        
             self.parser = GPS_NMEA_parser()
             self.rmc_parser = RMC_parser()
             self.gga_parser = GGA_parser()

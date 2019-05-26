@@ -3,7 +3,7 @@ from observer import *
 
 class GPS_Quality(Subscriber):
 	def __init__(self): 
-		self.validity ='V'
+		self.validity ='NON INIT'
 		self.pos = 2
 		Subscriber.__init__(self, "Latitude")
 		pass
