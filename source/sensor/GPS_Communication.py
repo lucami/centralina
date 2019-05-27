@@ -31,7 +31,7 @@ class GPS_Serial(GPS_Communication):
         #except:
 
     def toString(self):
-        str_ = "GPS_Sierial"
+        str_ = "GPS_Serial"
         #print (str_)
         return str_
 
