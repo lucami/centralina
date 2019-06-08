@@ -8,7 +8,6 @@ from GPS_Facade import *
 from opt_manager import parser
 
 p=parser()
-#print(p.get_gps_arg())
 
 if p.get_gps_arg() in 'fake':
     facade = GPS_Facade("TEST_NMEA")
