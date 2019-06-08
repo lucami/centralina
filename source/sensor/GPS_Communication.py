@@ -73,12 +73,17 @@ class GPS_Dummy_NMEA(GPS_Communication):
     
     def __init__(self):
         #print ("DUMMY NMEA Generator built!")
-        #$GPRMC,,V,,,,,,,,,,N*53
-        self.rmc_sentence = "$GPRMC,123519,A,4807.038,N,01131.000,E,022.4,084.4,230394,003.1,W*6A"
+        self.rmc_sentence ="GPRMC,,V,,,,,,,,,,N*53"
+        #self.rmc_sentence = "$GPRMC,123519,A,4807.038,N,01131.000,E,022.4,084.4,230394,003.1,W*6A"
         self.gga_sentence="$GPGGA,123519,4807.038,N,01131.000,E,1,08,0.9,545.4,M,46.9,M,,*47"
         self.sentence=self.rmc_sentence
         Publisher.__init__(self)
         kicker.__init__(self)
+        self.sentences = [] 
+        self.sentences.append("GPRMC,,V,,,,,,,,,,N*53")
+        self.sentences.append("$GPGGA,123519,4807.038,N,01131.000,E,1,08,0.9,545.4,M,46.9,M,,*47")
+        self.sentences.append("$GPRMC,123519,A,4807.038,N,01131.000,E,022.4,084.4,230394,003.1,W*6A")
+        self.index = 0
         pass
 
     def toString(self):
@@ -98,12 +103,10 @@ class GPS_Dummy_NMEA(GPS_Communication):
         Publisher.dispatch(self, self.sentence)
 
     def execute(self):
-        if "RMC" in self.sentence:
-            self.sentence = self.gga_sentence
-        else:
-            self.sentence = self.rmc_sentence
-        Publisher.dispatch(self, self.sentence)
-        
+        if self.index == 3:
+            self.index = 0
+        Publisher.dispatch(self, self.sentences[self.index])
+        self.index = self.index+1; 
 
 class GPS_Dummy_JSON(GPS_Communication):
     def __init__(self):

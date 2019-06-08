@@ -5,11 +5,18 @@ from GPS_Factory import *
 from scheduler import *
 from kick import *
 from GPS_Facade import *
+from opt_manager import parser
+
+p=parser()
+#print(p.get_gps_arg())
+
+if p.get_gps_arg() in 'fake':
+    facade = GPS_Facade("TEST_NMEA")
+else:
+    facade = GPS_Facade("DEFAULT")
 
 
 s = Scheduler("task scheduler")
-#facade = GPS_Facade("TEST_NMEA")
-facade = GPS_Facade("DEFAULT")
 dummy = kicker()
 
 s.add_task(facade, "facade")
