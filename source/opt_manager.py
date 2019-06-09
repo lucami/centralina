@@ -18,12 +18,17 @@ class parser():
     
         parser = argparse.ArgumentParser()
         parser.add_argument('-gps', '--gps')
+        parser.add_argument('-jobtest', '--jobtest')
         parser.add_argument('-v', dest='verbose', action='store_true')
         args = parser.parse_args()
         arg_dic=vars(args)
         self.nmea_arg=arg_dic.get('gps')
+        self.scheduler = arg_dic.get('jobtest')
+
     def get_gps_arg(self):
         return self.nmea_arg
+    def get_scheduler_arg(self):
+        return self.scheduler
 
 def test_gps_parser():
     p = parser()

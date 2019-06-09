@@ -44,16 +44,21 @@ class GPS_NMEA_parser(GPS_Parser):
         else:
             raise ValueError("GPS NMEA checksum fail")
 
-    def parse(self, sentence): 
+    def parse(self, sentences):
 
-        #print(sentence)
 
-        try:
-            GPS_NMEA_parser.checksum_validator(self, sentence)
-        except:
-            return
+        for s in sentences:
+            print("--> {} <--".format(s))
 
-        Publisher.dispatch(self, sentence)
+        for s in sentences:
+            try:
+              GPS_NMEA_parser.checksum_validator(self, s)
+
+            except:
+                print("checksum fail")
+                pass
+
+            Publisher.dispatch(self, s)
 '''
 $GPRMC,123519,A,4807.038,N,01131.000,E,022.4,084.4,230394,003.1,W*6A
 

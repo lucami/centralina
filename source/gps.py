@@ -9,17 +9,20 @@ from opt_manager import parser
 
 p=parser()
 
-if p.get_gps_arg() in 'fake':
+if p.get_gps_arg() == 'fake':
     facade = GPS_Facade("TEST_NMEA")
 else:
     facade = GPS_Facade("DEFAULT")
 
-
 s = Scheduler("task scheduler")
-dummy = kicker()
+
 
 s.add_task(facade, "facade")
-s.add_task(dummy, "Dummy")
+
+if p.get_scheduler_arg() == 'test':
+    dummy = kicker()
+    s.add_task(dummy, "Dummy")
+
 i=0
 while True:
     i=i+1
@@ -28,8 +31,8 @@ while True:
     print(facade.get_position())
     print(facade.get_time_date())
     print(facade.get_validity())
-    if i == 4:
+    if i == 4 and p.get_scheduler_arg() == 'test':
         s.remove_task("Dummy")
-    if i == 7:
+    if i == 7 and p.get_scheduler_arg() == 'test':
         s.add_task(dummy, "Dummy")
     print("")
