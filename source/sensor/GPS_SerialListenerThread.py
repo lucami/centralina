@@ -24,5 +24,4 @@ def main():
         mythread.start()                                   # ...Start the thread, invoke the run method
         time.sleep(.9)                                     # ...Wait 0.9 seconds before starting another
 
-
 main()
