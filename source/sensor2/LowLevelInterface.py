@@ -24,6 +24,7 @@ class NMEA_Interface(LowLevelInterface):
         while True:
             try:
                 element = self.char_queue.get(block=False)
+                self.char_queue.task_done()
             except:
                 time.sleep(1)
                 continue

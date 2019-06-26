@@ -38,3 +38,9 @@ class NMEA_Interface(LowLevelInterface):
 
             if self.state == 1:
                 self.buffer = self.buffer+element
+
+class JSON_Interface(LowLevelInterface):
+    def __init__(self, char_queue, packet_queue, threadID, name):
+        pass
+    def run(self):
+        pass
