@@ -8,6 +8,20 @@ from kick import *
 from gps_data import *
 from facade import *
 
+class factory():
+    def __init__(self, type):
+        if "nmea" in type and "sim" in type:
+            self.nmea_sim()
+        elif "nmea" in type and "serial" in type:
+            self.nmea_serial()
+
+    def nmea_sim(self):
+
+
+    def nmea_sim(self):
+        pass
+
+
 q1 = queue.Queue()
 q2 = queue.Queue()
 

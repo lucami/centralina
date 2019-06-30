@@ -67,9 +67,7 @@ class NMEA_Parser(Parser):
     def deliver(self):
         str_to_publish=self.rmc.strip("\r\n")+";"+self.gga.strip("\r\n")
         Publisher.dispatch(self, str_to_publish)
-        print("dispatch: {}".format(str_to_publish))
-
-
+        #print("dispatch: {}".format(str_to_publish))
 
 class JSON_Parser(Parser):
     def __init__(self):
