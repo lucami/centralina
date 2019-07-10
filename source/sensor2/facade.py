@@ -11,4 +11,5 @@ class facade(Subscriber):
 
 
     def gps_data_update(self, msg):
+        print("gps_data_update")
         print("facade: {}".format(msg))
