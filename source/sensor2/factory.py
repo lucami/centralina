@@ -20,6 +20,8 @@ class factory():
     def get_parser(self):
         return self.parser
 
+    def get_facade(self):
+        return self.fac
 
     def nmea_sim(self):
         q1 = queue.Queue()
@@ -34,20 +36,11 @@ class factory():
         gps_data_adapter = Gps_Data()
         parser.register(gps_data_adapter, gps_data_adapter.nmea_update)
 
-        f = facade()
-        gps_data_adapter.register(f, f.gps_data_update)
+        self.fac = facade()
+        gps_data_adapter.register(self.fac, self.fac.gps_data_update)
 
         low.start()
         poll.start()
 
     def nmea_serial(self):
         pass
-
-f=factory("nmea sim")
-parser = f.get_parser()
-
-s = Scheduler("task scheduler")
-s.add_task(parser, "parser")
-
-while True:
-    s.run()
