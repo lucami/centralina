@@ -1,9 +1,12 @@
 from kick import *
+import calendar
+import time
 
-class Scheduler:
+class Scheduler():
     def __init__(self, name):
         self.name = name
         self.task = {}
+        self.time = calendar.timegm(time.gmtime())
 
     def add_task(self, kicker, name = None):
         if name == None:
@@ -12,6 +15,12 @@ class Scheduler:
         self.task.update({name: kicker})
 
     def run(self):
+        t=calendar.timegm(time.gmtime())
+        if t-self.time > 1:
+            self.time = calendar.timegm(time.gmtime())
+        else:
+            pass
+            
         for n,t in self.task.items():
             #print("eseguo {}".format(n))
             t.kick()
@@ -21,4 +30,3 @@ class Scheduler:
             print("{} removed from scheduler".format(param))
         else:
             print("{} not found in the scheduler".format(param))
-

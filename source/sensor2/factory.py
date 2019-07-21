@@ -43,4 +43,21 @@ class factory():
         poll.start()
 
     def nmea_serial(self):
+        q1 = queue.Queue()
+        q2 = queue.Queue()
+
+        poll = SerialPoll(q1,1, "Poll Thread")
+        low = NMEA_Interface(q1, q2, 2, "Low Level interface Thread")
+        parser = NMEA_Parser(q2)
+
+        self.parser = parser
+
+        gps_data_adapter = Gps_Data()
+        parser.register(gps_data_adapter, gps_data_adapter.nmea_update)
+
+        self.fac = facade()
+        gps_data_adapter.register(self.fac, self.fac.gps_data_update)
+
+        low.start()
+        poll.start()
         pass

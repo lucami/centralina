@@ -27,7 +27,11 @@ class NMEA_Parser(Parser):
 
     def checksum_check(self, sentence):
         sentence = sentence.strip('\n')
-        nmeadata,cksum = sentence.split('*', 1)
+
+        try:
+            nmeadata,cksum = sentence.split('*', 1)
+        except:
+            return False
 
         calc_cksum = 0
         for s in nmeadata:

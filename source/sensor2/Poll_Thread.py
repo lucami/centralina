@@ -30,7 +30,7 @@ class SerialPoll(PollThread):
     def run(self):
 
         while True:
-            char = port.read()
+            char = self.port.read()
             self.char_queue.put(char)
         pass
 
