@@ -1,0 +1,19 @@
+{
+  "DEFAULT": 
+  {
+    "SOURCE": "/dev/ttyS4",
+    "FORMAT": "NMEA"
+  },
+ 
+  "TEST_NMEA": 
+  {
+    "SOURCE": "dummy_nmea",
+    "FORMAT": "NMEA"
+  },
+
+  "TEST_JSON": 
+  {
+    "SOURCE": "dummy_json",
+    "FORMAT": "JSON"
+  }
+}
