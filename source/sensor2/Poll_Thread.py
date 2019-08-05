@@ -55,7 +55,6 @@ class SerialNMEASim(PollThread):
 
     def run(self):
         print("Running {}".format(self.name))
-
         while True:
             time_to_sleep = random.randint(0,100)
             positive = random.randint(0,1)
@@ -67,7 +66,7 @@ class SerialNMEASim(PollThread):
             for i in self.dataset:
                 self.char_queue.put(i)
                 time_to_sleep = random.randint(0,10)
-                time.sleep(time_to_sleep/1000)
+                time.sleep(time_to_sleep/10000)
         pass
 
     def get_id(self):

@@ -2,13 +2,14 @@ from LowLevelInterface import *
 from Poll_Thread import *
 from parser import *
 import queue
+from gps_data import *
+from facade import *
 sys.path.insert(0,'./sensor')
 from scheduler import *
 from kick import *
-from gps_data import *
-from facade import *
 
-class factory():
+
+class gps_factory():
     def __init__(self, type):
         self.parser = None
 
@@ -16,6 +17,8 @@ class factory():
             self.nmea_sim()
         elif "nmea" in type and "serial" in type:
             self.nmea_serial()
+        else:
+            print ("ERROR in running mode")
 
     def get_parser(self):
         return self.parser

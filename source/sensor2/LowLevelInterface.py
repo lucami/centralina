@@ -25,10 +25,11 @@ class NMEA_Interface(LowLevelInterface):
             try:
                 element = self.char_queue.get(block=False)
                 self.char_queue.task_done()
-                element=str(element, 'utf-8')
+                #element=str(element, 'utf-8')
             except:
                 time.sleep(1)
                 continue
+
 
             if element == '$':
                 self.state = 1

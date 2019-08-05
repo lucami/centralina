@@ -24,7 +24,26 @@ class SerialPoll(PollThread):
         self.threadID = threadID
         self.name = name
         self.char_queue = chracter_queue
-        self.port = serial.Serial('/dev/ttyS4')
+        self.port = serial.Serial('/dev/ttyS0',baudrate=9600,timeout=1)
+
+        packet = bytearray()
+        packet.append(0x68)
+        packet.append(0x01)
+        packet.append(0x40)
+        packet.append(0x57)
+        #set to autosend
+        self.port.write(packet)
+        self.port.read(4)
+
+        packet = bytearray()
+        packet.append(0x68)
+        packet.append(0x01)
+        packet.append(0x01)
+        packet.append(0x96)
+        #set to autosend
+        self.port.write(packet)
+        self.port.read(4)
+
         pass
 
     def run(self):
@@ -43,7 +62,7 @@ class SerialPoll(PollThread):
     def get_queue(self):
         return self.char_queue
 
-class SerialNMEASim(PollThread):
+class SerialAirSim(PollThread):
     def __init__(self, chracter_queue, threadID, name):
         threading.Thread.__init__(self)
         self.threadID = threadID
@@ -54,20 +73,6 @@ class SerialNMEASim(PollThread):
         pass
 
     def run(self):
-        print("Running {}".format(self.name))
-
-        while True:
-            time_to_sleep = random.randint(0,100)
-            positive = random.randint(0,1)
-            if positive:
-                time.sleep(1 + time_to_sleep/1000)
-            else:
-                time.sleep(1 - time_to_sleep/1000)
-
-            for i in self.dataset:
-                self.char_queue.put(i)
-                time_to_sleep = random.randint(0,10)
-                time.sleep(time_to_sleep/1000)
         pass
 
     def get_id(self):
