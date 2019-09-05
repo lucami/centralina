@@ -23,6 +23,7 @@ class NMEA_Parser(Parser):
         pass
 
     def kick(self):
+        #print("parser kicked")
         self.parse()
 
     def checksum_check(self, sentence):
@@ -48,25 +49,30 @@ class NMEA_Parser(Parser):
 
 
     def parse(self):
-        sentence = self.sentence_queue.get(block=1)
-        self.sentence_queue.task_done()
-        self.checksum_check(sentence)
-        rval = True
-        if self.checksum_check(sentence):
-            pass
-            #print("Estratta {}".format(sentence))
-        else:
-            rval=False
-            print("checksum error")
+        while True:
+            try:
+                sentence = self.sentence_queue.get(block=False)
+                self.sentence_queue.task_done()
+                self.checksum_check(sentence)
+                rval = True
+                if self.checksum_check(sentence):
+                    pass
+                    #print("Estratta {}".format(sentence))
+                else:
+                    rval=False
+                    print("checksum error: {}".format(sentence))
 
-        if "RMC" in sentence and rval == True:
-            self.rmc=sentence
-            self.gga=""
-        elif "GGA" in sentence and rval == True:
-            self.gga=sentence
-            self.deliver()
-            self.rmc=""
-            self.gga=""
+                if "RMC" in sentence and rval == True:
+                    self.rmc=sentence
+                    self.gga=""
+                elif "GGA" in sentence and rval == True:
+                    self.gga=sentence
+                    self.deliver()
+                    self.rmc=""
+                    self.gga=""
+            except:
+                #print("parser except")
+                break
 
     def deliver(self):
         str_to_publish=self.rmc.strip("\r\n")+";"+self.gga.strip("\r\n")

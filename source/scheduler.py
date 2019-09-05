@@ -15,15 +15,18 @@ class Scheduler():
         self.task.update({name: kicker})
 
     def run(self):
+
+
         t=calendar.timegm(time.gmtime())
-        if t-self.time > 1:
+        if t-self.time >= 1:
             self.time = calendar.timegm(time.gmtime())
         else:
-            pass
-            
+            return
+
         for n,t in self.task.items():
             #print("eseguo {}".format(n))
             t.kick()
+
     def remove_task(self, param):
         if param in self.task:
             del self.task[param]

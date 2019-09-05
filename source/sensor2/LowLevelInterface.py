@@ -25,7 +25,7 @@ class NMEA_Interface(LowLevelInterface):
             try:
                 element = self.char_queue.get(block=False)
                 self.char_queue.task_done()
-                #element=str(element, 'utf-8')
+                element=str(element, 'utf-8')
             except:
                 time.sleep(1)
                 continue
@@ -37,6 +37,7 @@ class NMEA_Interface(LowLevelInterface):
             elif '\n' in element:
                 self.state=0
                 self.packet_queue.put(self.buffer)
+                #print(self.buffer)
                 self.buffer=''
                 continue
 

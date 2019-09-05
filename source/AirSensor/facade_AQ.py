@@ -1,15 +1,16 @@
 from observer import *
 
-class facade(Subscriber):
+class facade_AQ(Subscriber):
     def __init__(self):
         Subscriber.__init__(self, "facade")
         self.pm10 = 0
         self.pm2p5  = 0
         self.crc_ok  = 0
+        self.new_data=1
 
 
     def air_data_update(self, msg):
-        #print("facade: {}".format(msg))
+        #print("facade_AQ: {}".format(msg))
         s=msg.split(';')
         self.pm10 = s[0]
         self.pm2p5 = s[1]
@@ -33,4 +34,4 @@ class facade(Subscriber):
 
     def get_air_data(self):
         self.new_data=0
-        return self.pm10+";"+self.pm2p5+";"+self.crc_ok
+        return str(self.pm10)+";"+str(self.pm2p5)+";"+str(self.crc_ok)

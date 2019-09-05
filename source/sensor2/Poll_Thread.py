@@ -28,10 +28,11 @@ class SerialPoll(PollThread):
         pass
 
     def run(self):
-
+        print("Running {}".format(self.name))
         while True:
-            char = self.port.read()
-            self.char_queue.put(char)
+            car = self.port.read()
+            self.char_queue.put(car)
+            #print("CHAR: {}".format(car))
         pass
 
     def get_id(self):
