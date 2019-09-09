@@ -25,6 +25,7 @@ class NMEA_Interface(LowLevelInterface):
             try:
                 element = self.char_queue.get(block=False)
                 self.char_queue.task_done()
+                #print("element:{}".format(element))
                 element=str(element, 'utf-8')
             except:
                 time.sleep(1)

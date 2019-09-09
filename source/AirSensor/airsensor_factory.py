@@ -34,7 +34,7 @@ class airsensor_factory():
         parser.register(airquality_data_adapter, airquality_data_adapter.air_data_update)
 
         self.fac = facade_AQ()
-        airquality_data_adapter.register(self.fac, self.fac.air_data_update)
+        airquality_data_adapter.register(self.fac, self.fac.data_update)
 
         low.start()
         poll.start()

@@ -40,7 +40,7 @@ class gps_factory():
         parser.register(gps_data_adapter, gps_data_adapter.nmea_update)
 
         self.fac = facade()
-        gps_data_adapter.register(self.fac, self.fac.gps_data_update)
+        gps_data_adapter.register(self.fac, self.fac.data_update)
 
         low.start()
         poll.start()
@@ -59,7 +59,7 @@ class gps_factory():
         parser.register(gps_data_adapter, gps_data_adapter.nmea_update)
 
         self.fac = facade()
-        gps_data_adapter.register(self.fac, self.fac.gps_data_update)
+        gps_data_adapter.register(self.fac, self.fac.data_update)
 
         low.start()
         poll.start()

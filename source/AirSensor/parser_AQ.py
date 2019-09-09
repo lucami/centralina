@@ -27,9 +27,9 @@ class HONEYWELL_Parser(Parser):
 
     def parse(self):
         try:
-            sentence = self.sentence_queue.get(block=1)
+            sentence = self.sentence_queue.get(block=False)
             self.sentence_queue.task_done()
-            #print("parser_AQ pre parse: {}".format(sentence))
+            print("parser_AQ pre parse: {}".format(sentence))
             #print("Values: {}{} | {}{}".format(sentence[4],sentence[5],sentence[6],sentence[7]))
             rval = True
 
@@ -45,7 +45,7 @@ class HONEYWELL_Parser(Parser):
             #print("pm10: {}".format(self.pm10))
             #print("pm2.5: {}".format(self.pm2p5))
             self.deliver()
-        finally:
+        except:
             pass
 
     def deliver(self):

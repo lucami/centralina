@@ -21,6 +21,7 @@ class Scheduler():
         if t-self.time >= 1:
             self.time = calendar.timegm(time.gmtime())
         else:
+            #print("troppo presto")
             return
 
         for n,t in self.task.items():

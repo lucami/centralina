@@ -34,9 +34,9 @@ class SerialPoll_AQ(PollThread_AQ):
         #send stop
         self.port.write(packet)
         a=self.port.read(4)
-        '''print(len(a))
+        print(len(a))
         for i in range(len(a)):
-            print(a[i])'''
+            print(a[i])
         time.sleep(2)
 
 
@@ -47,9 +47,9 @@ class SerialPoll_AQ(PollThread_AQ):
         #set to autosend
         self.port.write(packet)
         a=self.port.read(4)
-        '''print(len(a))
+        print(len(a))
         for i in range(len(a)):
-            print(a[i])'''
+            print(a[i])
 
         packet = bytearray()
         packet.append(0x68)
@@ -59,16 +59,16 @@ class SerialPoll_AQ(PollThread_AQ):
         #set to autosend
         self.port.write(packet)
         a=self.port.read(4)
-        '''print(len(a))
+        print(len(a))
         for i in range(len(a)):
-            print(a[i])'''
+            print(a[i])
         pass
 
     def run(self):
 
         while True:
             car = self.port.read()
-            #print("Poll_Thread_AQ: {}".format(car))
+            print("Poll_Thread_AQ: {}".format(car))
             self.char_queue.put(car)
         pass
 
