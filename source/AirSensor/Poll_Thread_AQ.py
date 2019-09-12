@@ -68,7 +68,7 @@ class SerialPoll_AQ(PollThread_AQ):
 
         while True:
             car = self.port.read()
-            print("Poll_Thread_AQ: {}".format(car))
+            #print("Poll_Thread_AQ: {}".format(car))
             self.char_queue.put(car)
         pass
 

@@ -29,7 +29,7 @@ class HONEYWELL_Parser(Parser):
         try:
             sentence = self.sentence_queue.get(block=False)
             self.sentence_queue.task_done()
-            print("parser_AQ pre parse: {}".format(sentence))
+            #print("parser_AQ pre parse: {}".format(sentence))
             #print("Values: {}{} | {}{}".format(sentence[4],sentence[5],sentence[6],sentence[7]))
             rval = True
 

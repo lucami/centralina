@@ -29,7 +29,7 @@ class Honeywell_Interface(LowLevelInterface):
             try:
                 element = self.char_queue.get(block=False)
                 self.char_queue.task_done()
-                print("Honeywell_Interface element: {}".format(element))
+                #print("Honeywell_Interface element: {}".format(element))
 
                 if self.mark == 0 and element == b'B':
                     self.mark = 1
@@ -44,7 +44,7 @@ class Honeywell_Interface(LowLevelInterface):
                         self.mark = 0
                         self.count = 0
                         self.packet_queue.put(self.buffer)
-                        print("Honeywell_Interface buffer: {}".format(self.buffer))
+                        #print("Honeywell_Interface buffer: {}".format(self.buffer))
                         self.buffer= []
             except:
                 pass

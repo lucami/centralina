@@ -11,7 +11,7 @@ class facade_AQ(Sensor_Facade,Subscriber):
 
 
     def data_update(self, msg):
-        print("facade_AQ: {}".format(msg))
+        #print("facade_AQ: {}".format(msg))
         s=msg.split(';')
         self.pm10 = s[0]
         self.pm2p5 = s[1]
