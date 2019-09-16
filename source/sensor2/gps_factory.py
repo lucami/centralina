@@ -42,6 +42,9 @@ class gps_factory():
         self.fac = facade()
         gps_data_adapter.register(self.fac, self.fac.data_update)
 
+        low.daemon=True
+        poll.daemon=True
+
         low.start()
         poll.start()
 
@@ -60,6 +63,9 @@ class gps_factory():
 
         self.fac = facade()
         gps_data_adapter.register(self.fac, self.fac.data_update)
+
+        low.daemon=True
+        poll.daemon=True
 
         low.start()
         poll.start()

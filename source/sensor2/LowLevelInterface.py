@@ -2,6 +2,7 @@ import threading
 import queue
 import time
 from observer import *
+from threading import Event
 
 class LowLevelInterface(threading.Thread, Publisher):
     def __init__(self):
@@ -22,6 +23,7 @@ class NMEA_Interface(LowLevelInterface):
         self.buffer = ''
         self.state = 0
         while True:
+
             try:
                 element = self.char_queue.get(block=False)
                 self.char_queue.task_done()

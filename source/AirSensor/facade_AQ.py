@@ -35,4 +35,4 @@ class facade_AQ(Sensor_Facade,Subscriber):
 
     def get_data(self):
         self.new_data=False
-        return str(self.pm10)+";"+str(self.pm2p5)+";"+str(self.crc_ok)
+        return str(self.pm10)+";"+str(self.pm2p5)+";"+str(self.crc_ok)+";"

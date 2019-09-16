@@ -54,9 +54,9 @@ class facade(Sensor_Facade, Subscriber):
         #49 + (16.45/60) = 49.2741 N
         #123 + (11.12/60) = 123.1853 W
         a = self.latitude[0:2]
-        print(a)
+        #print(a)
         b=str(round(float(self.latitude[2:-2])/60, 5))[2:]+" "+self.latitude[-1]
-        print(b)
+        #print(b)
         lat=a+"."+b
         #print("{}.{}".format(a,b))
 
@@ -75,6 +75,6 @@ class facade(Sensor_Facade, Subscriber):
     def get_data(self):
         try:
             self.new_data=False
-            return self.get_position()+"-"+self.get_time()+"-"+self.get_quality()
+            return self.get_position()+";"+self.get_time()+";"+self.get_quality()
         except:
             return "not valid"

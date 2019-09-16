@@ -36,6 +36,9 @@ class airsensor_factory():
         self.fac = facade_AQ()
         airquality_data_adapter.register(self.fac, self.fac.data_update)
 
+        low.daemon=True
+        poll.daemon=True
+
         low.start()
         poll.start()
         pass

@@ -65,7 +65,7 @@ class Gps_Data(Singleton, Subscriber, Publisher):
 
     def deliver(self):
         #str_to_publish = self.time +";"+self.date+";"+self.latitude+";"+self.longitude+";"+self.quality
-        str_to_publish = self.time +";"+self.date+";"+self.lat+";"+self.lon+";"+self.quality
+        str_to_publish = self.time +";"+self.date+";"+self.lat+";"+self.lon+";"+self.quality+";"
         #print("dispatch: {}".format(str_to_publish))
         Publisher.dispatch(self, str_to_publish)
 

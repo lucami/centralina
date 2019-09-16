@@ -3,6 +3,7 @@ import queue
 import time
 import struct
 from observer import *
+from threading import Event
 
 class LowLevelInterface(threading.Thread, Publisher):
     def __init__(self):
