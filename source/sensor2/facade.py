@@ -75,6 +75,6 @@ class facade(Sensor_Facade, Subscriber):
     def get_data(self):
         try:
             self.new_data=False
-            return self.get_position()+";"+self.get_time()+";"+self.get_quality()
+            return self.get_position()+";"+self.get_time()+";"+self.get_quality()+";"
         except:
             return "not valid"

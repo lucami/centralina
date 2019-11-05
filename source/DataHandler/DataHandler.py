@@ -4,17 +4,22 @@ sys.path.insert(0,'../')
 from sensor_facade import *
 from kick import *
 from observer import *
+import collections
 
 class Data_Handler(kicker, Publisher):
     def __init__(self):
         Publisher.__init__(self)
-        self.sensor = {}
+        self.sensor = collections.OrderedDict()
         self.datafromsensor=""
         self.counter=0
 
     def add_sensor(self, name, obj):
         self.sensor.update({name: obj})
         #print("{} added to data handler".format(name))
+        #print("Sensor list: \r\n")
+        #for n,t in self.sensor.items():
+        #    print("->{}".format(n))
+
 
     def remove_sensor(self, check_name):
         if check_name in self.sensor:
@@ -27,7 +32,7 @@ class Data_Handler(kicker, Publisher):
         #print("read data")
         a = True
         for n,t in self.sensor.items():
-            #print("{}".format(n))
+            #print("{} data ready: {}".format(n,t.data_ready()))
             a &= t.data_ready()
         if a:
             #print("data ready!")

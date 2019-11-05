@@ -18,7 +18,7 @@ class Scheduler():
 
 
         t=calendar.timegm(time.gmtime())
-        if t-self.time >= 300:
+        if t-self.time >= 10:
             self.time = calendar.timegm(time.gmtime())
         else:
             #print("troppo presto")
