@@ -42,3 +42,5 @@ class airsensor_factory():
         low.start()
         poll.start()
         pass
+
+i2c_write(fd, addr, reg, val)
