@@ -1,9 +1,9 @@
-from LowLevelInterface_AQ import *
-from Poll_Thread_AQ import *
-from parser_AQ import *
+from AirSensor.LowLevelInterface_AQ import *
+from AirSensor.Poll_Thread_AQ import *
+from AirSensor.parser_AQ import *
 import queue
-from airsensor_data import *
-from facade_AQ import *
+from AirSensor.airsensor_data import *
+from AirSensor.facade_AQ import *
 sys.path.insert(0,'./sensor')
 from scheduler import *
 from kick import *
@@ -42,5 +42,3 @@ class airsensor_factory():
         low.start()
         poll.start()
         pass
-
-i2c_write(fd, addr, reg, val)

@@ -1,4 +1,4 @@
-from LowLevelInterface_AQ import *
+from AirSensor.LowLevelInterface_AQ import *
 from observer import *
 import sys
 sys.path.insert(0,'../')

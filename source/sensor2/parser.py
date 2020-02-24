@@ -1,8 +1,10 @@
-from LowLevelInterface import *
+from sensor2.LowLevelInterface import *
 from observer import *
 import sys
-sys.path.insert(0,'../')
+
+sys.path.insert(0, '../')
 from kick import *
+
 
 class Parser(Publisher, kicker):
     def __init__(self):
@@ -14,23 +16,24 @@ class Parser(Publisher, kicker):
     def kick(self):
         pass
 
+
 class NMEA_Parser(Parser):
     def __init__(self, sentence_queue):
         Publisher.__init__(self)
-        self.rmc=""
-        self.gga=""
-        self.sentence_queue=sentence_queue
+        self.rmc = ""
+        self.gga = ""
+        self.sentence_queue = sentence_queue
         pass
 
     def kick(self):
-        #print("parser kicked")
+        # print("parser kicked")
         self.parse()
 
     def checksum_check(self, sentence):
         sentence = sentence.strip('\n')
 
         try:
-            nmeadata,cksum = sentence.split('*', 1)
+            nmeadata, cksum = sentence.split('*', 1)
         except:
             return False
 
@@ -47,7 +50,6 @@ class NMEA_Parser(Parser):
             return False
         pass
 
-
     def parse(self):
         while True:
             try:
@@ -57,27 +59,28 @@ class NMEA_Parser(Parser):
                 rval = True
                 if self.checksum_check(sentence):
                     pass
-                    #print("Estratta {}".format(sentence))
+                    # print("Estratta {}".format(sentence))
                 else:
-                    rval=False
+                    rval = False
                     print("checksum error: {}".format(sentence))
 
                 if "RMC" in sentence and rval == True:
-                    self.rmc=sentence
-                    self.gga=""
+                    self.rmc = sentence
+                    self.gga = ""
                 elif "GGA" in sentence and rval == True:
-                    self.gga=sentence
+                    self.gga = sentence
                     self.deliver()
-                    self.rmc=""
-                    self.gga=""
+                    self.rmc = ""
+                    self.gga = ""
             except:
-                #print("parser except")
+                # print("parser except")
                 break
 
     def deliver(self):
-        str_to_publish=self.rmc.strip("\r\n")+";"+self.gga.strip("\r\n")
+        str_to_publish = self.rmc.strip("\r\n") + ";" + self.gga.strip("\r\n")
         Publisher.dispatch(self, str_to_publish)
-        #print("dispatch: {}".format(str_to_publish))
+        # print("dispatch: {}".format(str_to_publish))
+
 
 class JSON_Parser(Parser):
     def __init__(self):

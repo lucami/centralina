@@ -1,9 +1,10 @@
-from LowLevelInterface import *
-from Poll_Thread import *
-from parser import *
+from sensor2.LowLevelInterface import *
+from sensor2.Poll_Thread import *
+from sensor2.parser import *
 import queue
-from gps_data import *
-from facade import *
+import sys
+from sensor2.gps_data import *
+from sensor2.facade import *
 sys.path.insert(0,'./sensor')
 from scheduler import *
 from kick import *

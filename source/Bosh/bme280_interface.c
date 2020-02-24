@@ -13,6 +13,8 @@
 
 #define I2C_ADDR 0x76
 #define _BUF_LOG_SIZE 64 
+#define clear() printf("\033[H\033[J")
+
 
 uint32_t T1;
 int32_t  T2,T3;
@@ -22,8 +24,6 @@ int16_t P2,P3,P4,P5,P6,P7,P8,P9;
 
 uint8_t H1,H3,H6;
 int16_t H2,H4,H5;
-
-#define clear() printf("\033[H\033[J")
 
 
 struct mesg_buffer { 

@@ -1,24 +1,24 @@
 import sys
 import os
+
+from AirSensor import airsensor_factory
 from scheduler import *
 import calendar
 import time
 import signal
 from threading import *
 
+#sys.path.insert(0, './sensor2')
+from sensor2.gps_factory import *
 
+#sys.path.insert(0, './AirSensor')
+from AirSensor.airsensor_factory import *
 
-sys.path.insert(0,'./sensor2')
-from gps_factory import *
+#sys.path.insert(0, './DataHandler')
+from DataHandler.DataHandlerFactory import *
 
-sys.path.insert(0,'./AirSensor')
-from airsensor_factory import *
-
-sys.path.insert(0,'./DataHandler')
-from DataHandlerFactory import *
-
-sys.path.insert(0,'./fileManager')
-from FileManager import *
+#sys.path.insert(0, './fileManager')
+from fileManager.FileManager import *
 
 file_manager = FileManager()
 
@@ -28,13 +28,13 @@ def signal_handler(sig, frame):
     file_manager.close_file()
     sys.exit(0)
 
+
 signal.signal(signal.SIGINT, signal_handler)
 
-g_factory=gps_factory("nmea serial")
+g_factory = gps_factory("nmea serial")
 gps_facade = g_factory.get_facade()
 
-
-aq_factory=airsensor_factory()
+aq_factory = airsensor_factory()
 aq_facade = aq_factory.get_facade()
 
 dh_factory = DataHandler_Factory()
@@ -51,6 +51,6 @@ s.add_task(data_handler, "Data Handler")
 
 data_handler.register(file_manager, file_manager.data_update)
 
-i=0
+i = 0
 while True:
     s.run()

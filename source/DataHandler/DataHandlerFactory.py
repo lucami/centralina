@@ -1,5 +1,5 @@
 import os
-from DataHandler import *
+from DataHandler.DataHandler import *
 
 class DataHandler_Factory():
     def __init__(self):

@@ -1,4 +1,4 @@
-from singleton import *
+from sensor2.singleton import *
 from observer import *
 
 class Airsensor_Data(Singleton, Subscriber, Publisher):
