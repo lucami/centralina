@@ -29,7 +29,7 @@ class SerialPoll(PollThread):
         pass
 
     def run(self):
-        print("Running {}".format(self.name))
+        #print("Running {}".format(self.name))
         while True:
 
             car = self.port.read()

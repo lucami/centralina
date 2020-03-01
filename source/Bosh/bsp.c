@@ -339,11 +339,11 @@ int main (void)
 		h=get_H(fd);
 		p=get_P(fd);
 
-		printf("T: %d.%d\n",t/100,t%100);
-		printf("H: %f\n",h/1024.0);
-		printf("P: %d.%d\n",(p/256)/100, (p/256)%100);
+		//printf("T: %d.%d\n",t/100,t%100);
+		//printf("H: %f\n",h/1024.0);
+		//printf("P: %d.%d\n",(p/256)/100, (p/256)%100);
         str_len=sprintf(value_str,"    %d.%d,%f,%d.%d",t/100,t%100,h/1024.0,(p/256)/100, (p/256)%100);
-        printf("%d) %s\n",str_len, value_str);
+        //printf("%d) %s\n",str_len, value_str);
         m.temp=t;
         m.pres=p;
         m.hum=h;

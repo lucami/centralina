@@ -22,7 +22,7 @@ class Honeywell_Interface(LowLevelInterface):
         self.count = 0
 
     def run(self):
-        print("Running {}".format(self.name))
+        #print("Running {}".format(self.name))
         self.buffer = []
         self.state = 0
 

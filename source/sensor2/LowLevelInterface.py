@@ -19,7 +19,7 @@ class NMEA_Interface(LowLevelInterface):
         self.name = name
 
     def run(self):
-        print("Running {}".format(self.name))
+        #print("Running {}".format(self.name))
         self.buffer = ''
         self.state = 0
         while True:

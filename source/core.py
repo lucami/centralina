@@ -1,24 +1,10 @@
-import sys
-import os
-
-from AirSensor import airsensor_factory
-from scheduler import *
-import calendar
-import time
 import signal
-from threading import *
 
-#sys.path.insert(0, './sensor2')
-from sensor2.gps_factory import *
-
-#sys.path.insert(0, './AirSensor')
 from AirSensor.airsensor_factory import *
-
-#sys.path.insert(0, './DataHandler')
+from Bosh.Bosh_Factory import *
 from DataHandler.DataHandlerFactory import *
-
-#sys.path.insert(0, './fileManager')
 from fileManager.FileManager import *
+from sensor2.gps_factory import *
 
 file_manager = FileManager()
 
@@ -37,6 +23,9 @@ gps_facade = g_factory.get_facade()
 aq_factory = airsensor_factory()
 aq_facade = aq_factory.get_facade()
 
+bosh_factory = BoshFactory()
+bosh_facade = bosh_factory.get_facade()
+
 dh_factory = DataHandler_Factory()
 data_handler = dh_factory.get_data_handler()
 
@@ -44,9 +33,11 @@ s = Scheduler("task scheduler")
 
 data_handler.add_sensor("Air Sensor Facade", aq_facade)
 data_handler.add_sensor("GPS Facade", gps_facade)
+data_handler.add_sensor("Bosh Facade", bosh_facade)
 
 s.add_task(g_factory.get_parser(), "gps parser")
 s.add_task(aq_factory.get_parser(), "air quality parser")
+s.add_task(bosh_factory.get_parser(), "bosh parser")
 s.add_task(data_handler, "Data Handler")
 
 data_handler.register(file_manager, file_manager.data_update)

@@ -9,11 +9,11 @@ class Scheduler():
         self.task = {}
         self.time = calendar.timegm(time.gmtime())
 
-    def add_task(self, kicker, name=None):
+    def add_task(self, kicker_obj, name=None):
         if name == None:
-            name = kicker
-        print("{} put in the scheduler".format(name))
-        self.task.update({name: kicker})
+            name = kicker_obj
+        #print("{} put in the scheduler - {}".format(name, kicker_obj))
+        self.task.update({name: kicker_obj})
 
     def run(self):
 
@@ -25,7 +25,7 @@ class Scheduler():
             return
 
         for n, t in self.task.items():
-            # print("eseguo {}".format(n))
+            #print("eseguo {}".format(n))
             t.kick()
 
     def remove_task(self, param):
