@@ -322,7 +322,7 @@ int main (void)
     key_t k = ftok("\\tmp\\",65);
 	queue = msgget(k, 0666 | IPC_CREAT);
 
-	log_fd = open_log();
+	//log_fd = open_log();
 
 	fd=set_device();
 	start_device(fd);
@@ -348,8 +348,7 @@ int main (void)
         m.pres=p;
         m.hum=h;
 
-		write_log(log_fd,t,h,p);
-        //msgsnd (queue, &m, sizeof(struct mesg_buffer), 0);
+		//write_log(log_fd,t,h,p);
 
         msgsnd (queue, value_str, str_len, 0);
         memset(value_str,0,64);
@@ -359,10 +358,3 @@ int main (void)
 
 	return 0;
 }
-
-/*
-from sysv_ipc import *
-k = ftok("\\tmp\\",65)
-m=MessageQueue(k)
-m.receive()
-*/
