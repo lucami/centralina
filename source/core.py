@@ -2,13 +2,22 @@ import signal
 from AirSensor.airsensor_factory import *
 from Bosh.Bosh_Factory import *
 from DataHandler.DataHandlerFactory import *
+from WiFiManager.WiFi_Factory import GPIO46Manager
 from fileManager.FileManager import *
 from sensor2.gps_factory import *
 import subprocess
+import time
 
 pid = os.fork()
 if pid is 0:
     subprocess.call(['/home/debian/centralina/source/Bosh/bsp', '&'], shell=False)
+
+
+pid = os.fork()
+if pid is 0:
+    gpio_46 = GPIO46Manager()
+    gpio_46.run()
+
 
 file_manager = FileManager()
 
@@ -40,11 +49,14 @@ data_handler.register(file_manager, file_manager.data_update)
 i = 0
 while True:
     s.run()
+    time.sleep(1)
 #https://www.tanzolab.it/systemd
 #https://www.mauras.ch/systemd-run-it-last.html
 #sudo systemctl stop centralina
 #/etc/systemd/system/centralina. service
 #http://beaglebone.cameon.net/home/reading-the-analog-inputs-adc
+#https://pythonforundergradengineers.com/index6.html
+#https://www.fullstackpython.com/table-of-contents.html
 '''
 [Unit]
 Description=Lancia core.py

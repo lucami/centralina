@@ -23,10 +23,12 @@ class Bosh_Parser(Parser):
         self.k = ftok("\\tmp\\", 65)
         self.m = MessageQueue(self.k)
         self.data = ''
-        try:
-            self.m.receive()
-        except:
-            pass
+        while True:
+            try:
+                last = self.m.receive(block=False)
+                self.data = last
+            except:
+                break
 
         pass
 
@@ -35,18 +37,18 @@ class Bosh_Parser(Parser):
         self.parse()
 
     def parse(self):
-        try:
-            self.data = self.m.receive()
-            #print("msg queue data: {}".format(self.data))
-        except:
-            pass#print("msg queue except")
-
+        while True:
+            try:
+                last = self.m.receive(block=False)
+                self.data = last
+            except:
+                break
         try:
             self.deliver()
         except:
-            pass#print("deliver except")
+            pass  # print("deliver except")
 
     def deliver(self):
         str_to_publish = str(self.data)
         Publisher.dispatch(self, str_to_publish)
-        #print("msg queue publisher: {}".format(self.data))
+        # print("msg queue publisher: {}".format(self.data))
