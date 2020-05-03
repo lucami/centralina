@@ -1,0 +1,7 @@
+/BME280.pdf
+/honeywell-sensing-particulate-hpm-series-datasheet-32322550-f-en.pdf
+/Input pin
+/prova
+/Requisiti
+/stty -F :dev:ttyS0 9600 raw -echo -echoe -echok -e
+/test

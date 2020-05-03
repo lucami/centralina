@@ -12,11 +12,12 @@ pid = os.fork()
 if pid is 0:
     subprocess.call(['/home/debian/centralina/source/Bosh/bsp', '&'], shell=False)
 
-
+'''
 pid = os.fork()
 if pid is 0:
     gpio_46 = GPIO46Manager()
     gpio_46.run()
+'''
 
 
 file_manager = FileManager()

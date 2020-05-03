@@ -3,14 +3,14 @@ import calendar
 import time
 
 
-class Scheduler():
+class Scheduler:
     def __init__(self, name):
         self.name = name
         self.task = {}
         self.time = calendar.timegm(time.gmtime())
 
     def add_task(self, kicker_obj, name=None):
-        if name == None:
+        if name is None:
             name = kicker_obj
         #print("{} put in the scheduler - {}".format(name, kicker_obj))
         self.task.update({name: kicker_obj})
