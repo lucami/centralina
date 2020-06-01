@@ -1,8 +1,8 @@
-import signal
 from AirSensor.airsensor_factory import *
 from Bosh.Bosh_Factory import *
 from DataHandler.DataHandlerFactory import *
-from WiFiManager.WiFi_Factory import GPIO46Manager
+from WebServer.BackEnd.BackEnd import launch_backend
+from WiFiManager.WiFi_Manager import WiFiManager
 from fileManager.FileManager import *
 from sensor2.gps_factory import *
 import subprocess
@@ -19,7 +19,9 @@ if pid is 0:
     gpio_46.run()
 '''
 
+#t = test_task()
 
+wifi_manager = WiFiManager()
 file_manager = FileManager()
 
 g_factory = gps_factory("nmea serial")
@@ -44,20 +46,23 @@ s.add_task(g_factory.get_parser(), "gps parser")
 s.add_task(aq_factory.get_parser(), "air quality parser")
 s.add_task(bosh_factory.get_parser(), "bosh parser")
 s.add_task(data_handler, "Data Handler")
+s.add_task(wifi_manager, "WiFi Manager")
 
 data_handler.register(file_manager, file_manager.data_update)
+
+#launch_backend()
 
 i = 0
 while True:
     s.run()
     time.sleep(1)
-#https://www.tanzolab.it/systemd
-#https://www.mauras.ch/systemd-run-it-last.html
-#sudo systemctl stop centralina
-#/etc/systemd/system/centralina. service
-#http://beaglebone.cameon.net/home/reading-the-analog-inputs-adc
-#https://pythonforundergradengineers.com/index6.html
-#https://www.fullstackpython.com/table-of-contents.html
+# https://www.tanzolab.it/systemd
+# https://www.mauras.ch/systemd-run-it-last.html
+# sudo systemctl stop centralina
+# /etc/systemd/system/centralina. service
+# http://beaglebone.cameon.net/home/reading-the-analog-inputs-adc
+# https://pythonforundergradengineers.com/index6.html
+# https://www.fullstackpython.com/table-of-contents.html
 '''
 [Unit]
 Description=Lancia core.py
@@ -72,3 +77,8 @@ User=debian
 [Install]
 WantedBy=multi-user.target
 '''
+# https://pypi.org/project/PyAccessPoint/
+# https://pypi.org/project/netifaces/
+# https://pypi.org/project/wifi/
+# https://gist.github.com/taylor224/516de7dd0b707bc0b1b3
+# sudo vim /etc/default/hostapd

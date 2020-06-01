@@ -24,5 +24,6 @@ if __name__ == "__main__":
     switch = GPIO46Manager()
 
     while True:
-        print("{} - {}".format(switch.get_status()))
+        status, trigger = switch.get_status()
+        print("{} {}".format(status, trigger))
         time.sleep(3)
