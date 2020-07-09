@@ -9,6 +9,9 @@ auth = HTTPBasicAuth()
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/")
+def hello():
+    return "<h1 style='color:blue'>Hello There!</h1>"
 
 @app.route('/pm10pm2p5', methods=['GET'])
 def get_pms():
@@ -32,7 +35,7 @@ def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
 
 def launch_backend():
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=8081)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=8081)

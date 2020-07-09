@@ -5,7 +5,8 @@ import queue
 import sys
 from sensor2.gps_data import *
 from sensor2.facade import *
-sys.path.insert(0,'./sensor')
+
+sys.path.insert(0, './sensor')
 from scheduler import *
 from kick import *
 
@@ -19,7 +20,7 @@ class gps_factory():
         elif "nmea" in type and "serial" in type:
             self.nmea_serial()
         else:
-            print ("ERROR in running mode")
+            print("ERROR in running mode")
 
     def get_parser(self):
         return self.parser
@@ -31,7 +32,7 @@ class gps_factory():
         q1 = queue.Queue()
         q2 = queue.Queue()
 
-        poll = SerialNMEASim(q1,1, "Poll Thread")
+        poll = SerialNMEASim(q1, 1, "Poll Thread")
         low = NMEA_Interface(q1, q2, 2, "Low Level interface Thread")
         parser = NMEA_Parser(q2)
 
@@ -43,8 +44,8 @@ class gps_factory():
         self.fac = facade()
         gps_data_adapter.register(self.fac, self.fac.data_update)
 
-        low.daemon=True
-        poll.daemon=True
+        low.daemon = True
+        poll.daemon = True
 
         low.start()
         poll.start()
@@ -53,7 +54,7 @@ class gps_factory():
         q1 = queue.Queue()
         q2 = queue.Queue()
 
-        poll = SerialPoll(q1,1, "Poll Thread")
+        poll = SerialPoll(q1, 1, "Poll Thread")
         low = NMEA_Interface(q1, q2, 2, "Low Level interface Thread")
         parser = NMEA_Parser(q2)
 
@@ -65,8 +66,8 @@ class gps_factory():
         self.fac = facade()
         gps_data_adapter.register(self.fac, self.fac.data_update)
 
-        low.daemon=True
-        poll.daemon=True
+        low.daemon = True
+        poll.daemon = True
 
         low.start()
         poll.start()

@@ -19,6 +19,7 @@ class Parser(Publisher, kicker):
 
 class Bosh_Parser(Parser):
     def __init__(self):
+        print("Bosh parser init...")
         Publisher.__init__(self)
         self.k = ftok("\\tmp\\", 65)
         self.m = MessageQueue(self.k)
@@ -27,7 +28,9 @@ class Bosh_Parser(Parser):
             try:
                 last = self.m.receive(block=False)
                 self.data = last
+                print("Bosh parser init OK")
             except:
+                print("Bosh parser init ERROR")
                 break
 
         pass
@@ -51,4 +54,4 @@ class Bosh_Parser(Parser):
     def deliver(self):
         str_to_publish = str(self.data)
         Publisher.dispatch(self, str_to_publish)
-        # print("msg queue publisher: {}".format(self.data))
+        print("msg queue publisher: {}".format(self.data))

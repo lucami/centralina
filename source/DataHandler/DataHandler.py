@@ -33,7 +33,7 @@ class Data_Handler(kicker, Publisher):
         # print("read data")
         a = True
         for n, t in self.sensor.items():
-            #print("{} data ready: {}".format(n, t.data_ready()))
+            print("{} data ready: {}".format(n, t.data_ready()))
             a &= t.data_ready()
         if a:
             #print("data ready!")
