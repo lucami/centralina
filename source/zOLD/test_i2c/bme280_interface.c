@@ -6,11 +6,7 @@
 #include <string.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
-#include <time.h>
-#include <sys/ipc.h> 
-#include <sys/msg.h> 
-#include <stdint.h>
-#include "server.h"
+#include <inttypes.h>
 
 #define I2C_ADDR 0x76
 #define _BUF_LOG_SIZE 64 
@@ -26,28 +22,19 @@ int16_t H2,H4,H5;
 
 #define clear() printf("\033[H\033[J")
 
-
-struct mesg_buffer { 
-	int32_t temp;
-	uint32_t pres;
-	uint32_t hum;
-} message; 
-
-
 int set_device(){
-
 	int fd = open("/dev/i2c-2", O_RDWR);
 	
 	if (fd < 0) {
 		printf("Error opening file: %s\n", strerror(errno));
 		exit(EXIT_FAILURE);
 	}
-	
 
 	if (ioctl(fd, I2C_SLAVE, I2C_ADDR) < 0) {
 		printf("ioctl error: %s\n", strerror(errno));
 		exit(EXIT_FAILURE);
 	}
+	
 	return fd;
 }
 
@@ -57,12 +44,12 @@ void start_device(int fd){
 	int rval=0;
 	
 	buffer[0]=0xF5;//registro config
-	buffer[1]=0x04<<4;//t_standby a 500 msecondi
+	buffer[1]=0x05<<5;//t_standby a 1 secondo
 
 	rval = write(fd, buffer, 2);
 	if(rval != 2)
 	{
-		fprintf(stderr, "error in write 0xF5 reg. Expected 2, read %d\n",rval);
+		fprintf(stderr, "error in write 0xF2 reg. Expected 2, read %d\n",rval);
 		exit(EXIT_FAILURE);
 	}
 
@@ -86,8 +73,6 @@ void start_device(int fd){
 		fprintf(stderr, "error in write 0xF4 reg. Expected 2, read %d\n",rval);
 		exit(EXIT_FAILURE);
 	}
-
-
 }
 
 
@@ -108,7 +93,7 @@ uint8_t read_reg(int fd, uint8_t reg){
 }
 
 void get_T_comp_coeff(int fd){
-	
+
 	T1=read_reg(fd, 0x88);
 	T1+=read_reg(fd, 0x89)<<8;
 
@@ -296,17 +281,10 @@ void write_log(int fd, int32_t t, int32_t h, uint32_t p){
 	}
 }
 
-
-int main (void) 
-{	
-	int queue,fd,log_fd;
+int main (void) {
+	int fd,log_fd;
 	int32_t t=0,h=0;
 	uint32_t p=0;
-    char c[256];
-
-	int t_fd;
-	char *socket_path = "temperatura.socket";
-    init_server(socket_path, &t_fd);
 
 	log_fd = open_log();
 
@@ -324,16 +302,11 @@ int main (void)
 		t=get_T(fd);
 		h=get_H(fd);
 		p=get_P(fd);
-		
 		printf("T: %d.%d\n",t/100,t%100);
 		printf("H: %f\n",h/1024.0);
 		printf("P: %d.%d\n",(p/256)/100, (p/256)%100);
-
-        printf("read: %d\n",read(fd, &c, 256));
-		//send_data(t_fd, (void*)&t, sizeof(t));
-
 		write_log(log_fd,t,h,p);
-		sleep(1);
+		sleep(2);
 	}
 
 	return 0;
