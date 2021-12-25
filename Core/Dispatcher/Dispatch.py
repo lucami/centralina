@@ -2,8 +2,8 @@ class Subscriber:
     def __init__(self, name):
         self.name = name
 
-    def update(self, message):
-        print('{} ricevuto messaggio "{}"'.format(self.name, message))
+    def update(self, message, subscriber_name):
+        print('{} ricevuto messaggio "{} da {}'.format(self.name, message, subscriber_name))
 
 
 class Publisher:
@@ -20,7 +20,7 @@ class Publisher:
 
     def dispatch(self, message):
         for subscriber, callback in self.subscribers.items():
-            callback(message)
+            callback(message,subscriber)
 
 
 if __name__ == "__main__":

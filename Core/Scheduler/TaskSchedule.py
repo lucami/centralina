@@ -17,7 +17,7 @@ class Scheduler:
     def run(self):
 
         t = calendar.timegm(time.gmtime())
-        if t - self.time >= 1:
+        if t - self.time >= 10:
             self.time = calendar.timegm(time.gmtime())
         else:
             #print("troppo presto")
@@ -51,7 +51,7 @@ class Kicked:
         self.delta_t = round(now - self.last_exec)
         self.last_exec = now
         self.avg_delta = (self.avg_delta + self.delta_t) / 2
-        print(f"delta exec: {self.delta_t}")
+        #print(f"delta exec: {self.delta_t}")
 
 
 if __name__ == "__main__":

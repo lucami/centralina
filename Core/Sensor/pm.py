@@ -12,7 +12,8 @@ class PMSensor(Sensor):
 
     def kick(self):
         self.socket.sendto(self.msg, (self.ip, self.port))
-        self.socket.recvfrom(1024)
+        data = self.socket.recvfrom(1024)
+        self.dispatch(data)
         Kicked.kick(self)
 
 
