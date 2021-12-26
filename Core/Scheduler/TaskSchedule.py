@@ -15,7 +15,6 @@ class Scheduler:
         self.task.update({name: kicker_obj})
 
     def run(self):
-
         t = calendar.timegm(time.gmtime())
         if t - self.time >= 10:
             self.time = calendar.timegm(time.gmtime())

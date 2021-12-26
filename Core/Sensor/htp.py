@@ -17,6 +17,31 @@ class HTPSensor(Sensor):
         Kicked.kick(self)
 
 
+class HTPDataManager:
+    def __init__(self):
+        self.temperature = ""
+        self.pressure = ""
+        self.humidity = ""
+        pass
+
+    def parse_data(self, sentence):
+        # print(f"sentence: {sentence}")
+        s = sentence[0]
+        s = bytes.decode(s)
+        s = s.split(";")
+        self.temperature = s[0]
+        self.humidity = s[1]
+        self.pressure = s[2]
+
+        # print(f"T: {self.temperature} H: {self.humidity} P: {self.pressure}")
+
+    def get_data(self):
+        return self.temperature + ";" + self.pressure + ";" + self.humidity + ";"
+
+    def get_header(self):
+        return "temperature;pressure;humidity;"
+
+
 if __name__ == "__main__":
     s = HTPSensor()
     while True:

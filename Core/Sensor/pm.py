@@ -17,6 +17,27 @@ class PMSensor(Sensor):
         Kicked.kick(self)
 
 
+class PMDataManager:
+    def __init__(self):
+        self.pm10 = ""
+        self.pm2p5 = ""
+        pass
+
+    def parse_data(self, sentence):
+        s = sentence[0]
+        s = bytes.decode(s)
+        s = s.split(";")
+        self.pm2p5 = s[0]
+        self.pm10 = s[1]
+        #print(f"pm2p5: {self.pm2p5} pm10:{self.pm10}")
+
+    def get_data(self):
+        return self.pm2p5 + ";" + self.pm10 + ";"
+
+    def get_header(self):
+        return "pm2p5;pm10;"
+
+
 if __name__ == "__main__":
     s = PMSensor()
     while True:

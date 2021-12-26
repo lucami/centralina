@@ -17,6 +17,18 @@ class DigitalInSensor(Sensor):
         Kicked.kick(self)
 
 
+class DIDataManager:
+    def __init__(self):
+        self.state = ""
+        pass
+
+    def parse_data(self, sentence):
+        s = sentence[0]
+        s = bytes.decode(s)
+        self.state = s
+        #print(f"DI: {self.state}")
+
+
 if __name__ == "__main__":
     s = DigitalInSensor()
     while True:

@@ -46,7 +46,7 @@ def manage_gps(s):
     try:
         if len(data) > 0:
             s.sendto(str.encode(
-                "$GPRMC,173500.00,A,4137.39254,N,01320.01658,E,0.718,,251221,,,A*7B\n,A*6E\n$GPGGA,173500.00,4137.39254,N,01320.01658,E,1,05,1.49,184.7,M,42.5,M,,*5E\n$GPVTG,,T,,M,0.718,N,1.330,K,A*2C\n,A*38\n$GPGSA,A,3,32,29,24,12,02,,,,,,,,3.54,1.49,3.22*02\n5\n"),
+                "$GPRMC,102134.00,V,,,,,,,261221,,,N*7C\n$GPGGA,102134.00,,,,,0,00,99.99,,,,,,*63\n$GPVTG,,,,,,,,,N*30\n$GPGSA,A,1,,,,,,,,,,,,,99.99,99.99,99.99*30\n"),
                      addr)
     except Exception as ex:
         template = "An exception of type {0} occurred. Arguments:\n{1!r}"
