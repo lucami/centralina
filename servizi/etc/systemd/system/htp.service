@@ -1,0 +1,13 @@
+[Unit]
+Description=Humidity, Temperature, Pressure sensor
+After=network.target
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=debian
+ExecStart=/usr/bin/env /home/debian/centralina/BSP/htp/bosh_network_interface
+
+[Install]
+WantedBy=multi-user.target

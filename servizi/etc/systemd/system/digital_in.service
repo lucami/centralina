@@ -1,0 +1,13 @@
+[Unit]
+Description=Digital In Service Reader
+After=network.target
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=debian
+ExecStart=/usr/bin/env /home/debian/centralina/BSP/digital_in/digital_in_network_interface
+
+[Install]
+WantedBy=multi-user.target
