@@ -28,6 +28,7 @@ class Snapshot:
         self.htp_data = data
         pass
 
+
     def load_di_data(self, data):
         pass
 
