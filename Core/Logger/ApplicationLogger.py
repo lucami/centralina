@@ -14,19 +14,24 @@ class Log(object):
     __metaclass__ = Singleton
 
     def __init__(self):
-        logging.basicConfig(filename='AirQuality.log', encoding='utf-8', level=logging.DEBUG)
+        # logging.basicConfig(filename='AirQuality.log', level=logging.DEBUG)
+        self.log = open("AirQuality.log", "w", buffering=1)
 
     def debug(self, s):
-        logging.debug(s)
+        # logging.debug(s)
+        self.log.write(f"DEBUG {s}")
 
     def info(self, s):
-        logging.info(s)
+        # logging.info(s)
+        self.log.write(f"INFO {s}")
 
     def warning(self, s):
-        logging.warning(s)
+        # logging.warning(s)
+        self.log.write(f"WANRING {s}")
 
     def error(self, s):
-        logging.error(s)
+        # logging.error(s)
+        self.log.write(f"ERROR {s}")
 
 
 if __name__ == "__main__":

@@ -2,6 +2,7 @@ import time
 
 from Core.Scheduler.TaskSchedule import Kicked
 from Core.Sensor.Sensor import Sensor
+from Core.Logger.ApplicationLogger import Log
 
 
 class DigitalInSensor(Sensor):
@@ -9,6 +10,7 @@ class DigitalInSensor(Sensor):
         super().__init__()
         self.port = 1028
         self.msg = b'a'
+        self.logger = Log()
 
     def kick(self):
         self.socket.sendto(self.msg, (self.ip, self.port))
