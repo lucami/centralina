@@ -1,4 +1,5 @@
-import logging
+from datetime import datetime
+
 
 
 class Singleton(type):
@@ -13,21 +14,39 @@ class Singleton(type):
 class Log(object):
     __metaclass__ = Singleton
 
+    now = datetime.now()
+    t = now.strftime("%H:%M:%S")
+    d = now.strftime("%Y-%m-%d")
+    log = open(f"/home/debian/centralina/records/log_{t}_{d}.log", "w", buffering=1)
+
     def __init__(self):
-        logging.basicConfig(filename='AirQuality.log', encoding='utf-8', level=logging.DEBUG)
+        print("Log init")
+        #logging.basicConfig(filename='AirQuality.log', level=logging.DEBUG)
+        pass
 
     def debug(self, s):
-        logging.debug(s)
+        # logging.debug(s)
+        self.log.write(f"DEBUG {datetime.now().strftime('%H:%M:%S')} {s}\n")
+        #print(f"log: {s}")
+        self.log.flush()
 
     def info(self, s):
-        logging.info(s)
+        # logging.info(s)
+        self.log.write(f"INFO {datetime.now().strftime('%H:%M:%S')} {s}\n")
+        #print(f"log: {s}")
+        self.log.flush()
 
     def warning(self, s):
-        logging.warning(s)
+        # logging.warning(s)
+        self.log.write(f"WANRING {datetime.now().strftime('%H:%M:%S')} {s}\n")
+        #print(f"log: {s}")
+        self.log.flush()
 
     def error(self, s):
-        logging.error(s)
-
+        # logging.error(s)
+        self.log.write(f"ERROR {datetime.now().strftime('%H:%M:%S')} {s}\n")
+        #print(f"log: {s}")
+        self.log.flush()
 
 if __name__ == "__main__":
     l1 = Log()

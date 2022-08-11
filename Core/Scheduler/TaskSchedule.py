@@ -1,12 +1,13 @@
 import calendar
 import time
-
+from Core.Logger.ApplicationLogger import Log
 
 class Scheduler:
     def __init__(self, name):
         self.name = name
         self.task = {}
         self.time = calendar.timegm(time.gmtime())
+        self.logger = Log()
 
     def add_task(self, kicker_obj, name=None):
         if name is None:
@@ -16,14 +17,15 @@ class Scheduler:
 
     def run(self):
         t = calendar.timegm(time.gmtime())
-        if t - self.time >= 10:
+        if t - self.time >= 20:
             self.time = calendar.timegm(time.gmtime())
         else:
             #print("troppo presto")
             return
 
+        self.logger.debug("TaskSchedule.run - exec {}")
+
         for n, t in self.task.items():
-            #print("eseguo {}".format(n))
             t.kick()
 
     def remove_task(self, param):

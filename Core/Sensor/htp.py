@@ -1,5 +1,5 @@
 import time
-
+from Core.Logger.ApplicationLogger import Log
 from Core.Scheduler.TaskSchedule import Kicked
 from Core.Sensor.Sensor import Sensor
 
@@ -22,6 +22,7 @@ class HTPDataManager:
         self.temperature = ""
         self.pressure = ""
         self.humidity = ""
+        self.log= Log()
         pass
 
     def parse_data(self, sentence):
@@ -29,9 +30,17 @@ class HTPDataManager:
         s = sentence[0]
         s = bytes.decode(s)
         s = s.split(";")
-        self.temperature = s[0]
-        self.humidity = s[1]
-        self.pressure = s[2]
+        try:
+            self.temperature = s[0]
+            self.humidity = s[1]
+            self.pressure = s[2]
+        except:
+            self.temperature = "-100"
+            self.humidity = "-100"
+            self.pressure = "-100"
+            self.log.error(f"HTP Sensor parsing error. Received: {s}")
+
+
 
         # print(f"T: {self.temperature} H: {self.humidity} P: {self.pressure}")
 
