@@ -1,0 +1,274 @@
+DEBUG 15:37:15 Application INIT at 15:37:15 2023:12:23
+DEBUG 15:37:15 Client Service Initiated
+DEBUG 15:37:35 TaskSchedule.run - exec {}
+DEBUG 15:37:35 Snap.take_snap
+DEBUG 15:37:55 TaskSchedule.run - exec {}
+DEBUG 15:37:56 Snap.take_snap
+DEBUG 15:38:15 TaskSchedule.run - exec {}
+DEBUG 15:38:16 Snap.take_snap
+DEBUG 15:38:35 TaskSchedule.run - exec {}
+DEBUG 15:38:36 Snap.take_snap
+DEBUG 15:38:55 TaskSchedule.run - exec {}
+DEBUG 15:38:56 Snap.take_snap
+DEBUG 15:39:15 TaskSchedule.run - exec {}
+DEBUG 15:39:16 Snap.take_snap
+DEBUG 15:39:35 TaskSchedule.run - exec {}
+DEBUG 15:39:36 Snap.take_snap
+DEBUG 15:39:55 TaskSchedule.run - exec {}
+DEBUG 15:39:56 Snap.take_snap
+DEBUG 15:40:15 TaskSchedule.run - exec {}
+DEBUG 15:40:16 Snap.take_snap
+DEBUG 15:40:35 TaskSchedule.run - exec {}
+DEBUG 15:40:36 Snap.take_snap
+DEBUG 15:40:55 TaskSchedule.run - exec {}
+DEBUG 15:40:56 Snap.take_snap
+DEBUG 15:41:15 TaskSchedule.run - exec {}
+DEBUG 15:41:16 Snap.take_snap
+DEBUG 15:41:35 TaskSchedule.run - exec {}
+DEBUG 15:41:36 Snap.take_snap
+DEBUG 15:41:55 TaskSchedule.run - exec {}
+DEBUG 15:41:56 Snap.take_snap
+DEBUG 15:42:15 TaskSchedule.run - exec {}
+DEBUG 15:42:16 Snap.take_snap
+DEBUG 15:42:35 TaskSchedule.run - exec {}
+DEBUG 15:42:36 Snap.take_snap
+DEBUG 15:42:55 TaskSchedule.run - exec {}
+DEBUG 15:42:56 Snap.take_snap
+DEBUG 15:43:15 TaskSchedule.run - exec {}
+DEBUG 15:43:16 Snap.take_snap
+DEBUG 15:43:35 TaskSchedule.run - exec {}
+DEBUG 15:43:36 Snap.take_snap
+DEBUG 15:43:55 TaskSchedule.run - exec {}
+DEBUG 15:43:56 Snap.take_snap
+DEBUG 15:44:15 TaskSchedule.run - exec {}
+DEBUG 15:44:16 Snap.take_snap
+DEBUG 15:44:35 TaskSchedule.run - exec {}
+DEBUG 15:44:36 Snap.take_snap
+DEBUG 15:44:55 TaskSchedule.run - exec {}
+DEBUG 15:44:56 Snap.take_snap
+DEBUG 15:45:15 TaskSchedule.run - exec {}
+DEBUG 15:45:16 Snap.take_snap
+DEBUG 15:45:35 TaskSchedule.run - exec {}
+DEBUG 15:45:36 Snap.take_snap
+DEBUG 15:45:55 TaskSchedule.run - exec {}
+DEBUG 15:45:56 Snap.take_snap
+DEBUG 15:46:15 TaskSchedule.run - exec {}
+DEBUG 15:46:16 Snap.take_snap
+DEBUG 15:46:35 TaskSchedule.run - exec {}
+DEBUG 15:46:36 Snap.take_snap
+DEBUG 15:46:55 TaskSchedule.run - exec {}
+DEBUG 15:46:56 Snap.take_snap
+DEBUG 15:47:15 TaskSchedule.run - exec {}
+DEBUG 15:47:16 Snap.take_snap
+DEBUG 15:47:35 TaskSchedule.run - exec {}
+DEBUG 15:47:36 Snap.take_snap
+DEBUG 15:47:55 TaskSchedule.run - exec {}
+DEBUG 15:47:56 Snap.take_snap
+DEBUG 15:48:15 TaskSchedule.run - exec {}
+DEBUG 15:48:16 Snap.take_snap
+DEBUG 15:48:35 TaskSchedule.run - exec {}
+DEBUG 15:48:36 Snap.take_snap
+DEBUG 15:48:55 TaskSchedule.run - exec {}
+DEBUG 15:48:56 Snap.take_snap
+DEBUG 15:49:15 TaskSchedule.run - exec {}
+DEBUG 15:49:16 Snap.take_snap
+DEBUG 15:49:35 TaskSchedule.run - exec {}
+DEBUG 15:49:36 Snap.take_snap
+DEBUG 15:49:55 TaskSchedule.run - exec {}
+DEBUG 15:49:56 Snap.take_snap
+DEBUG 15:50:15 TaskSchedule.run - exec {}
+DEBUG 15:50:16 Snap.take_snap
+DEBUG 15:50:35 TaskSchedule.run - exec {}
+DEBUG 15:50:36 Snap.take_snap
+DEBUG 15:50:55 TaskSchedule.run - exec {}
+DEBUG 15:50:56 Snap.take_snap
+DEBUG 15:51:15 TaskSchedule.run - exec {}
+DEBUG 15:51:16 Snap.take_snap
+DEBUG 15:51:35 TaskSchedule.run - exec {}
+DEBUG 15:51:36 Snap.take_snap
+DEBUG 15:51:55 TaskSchedule.run - exec {}
+DEBUG 15:51:56 Snap.take_snap
+DEBUG 15:52:15 TaskSchedule.run - exec {}
+DEBUG 15:52:16 Snap.take_snap
+DEBUG 15:52:35 TaskSchedule.run - exec {}
+DEBUG 15:52:36 Snap.take_snap
+DEBUG 15:52:55 TaskSchedule.run - exec {}
+DEBUG 15:52:56 Snap.take_snap
+DEBUG 15:53:15 TaskSchedule.run - exec {}
+DEBUG 15:53:16 Snap.take_snap
+DEBUG 15:53:35 TaskSchedule.run - exec {}
+DEBUG 15:53:36 Snap.take_snap
+DEBUG 15:53:55 TaskSchedule.run - exec {}
+DEBUG 15:53:56 Snap.take_snap
+DEBUG 15:54:15 TaskSchedule.run - exec {}
+DEBUG 15:54:16 Snap.take_snap
+DEBUG 15:54:35 TaskSchedule.run - exec {}
+DEBUG 15:54:36 Snap.take_snap
+DEBUG 15:54:55 TaskSchedule.run - exec {}
+DEBUG 15:54:56 Snap.take_snap
+DEBUG 15:55:15 TaskSchedule.run - exec {}
+DEBUG 15:55:16 Snap.take_snap
+DEBUG 15:55:35 TaskSchedule.run - exec {}
+DEBUG 15:55:36 Snap.take_snap
+DEBUG 15:55:55 TaskSchedule.run - exec {}
+DEBUG 15:55:56 Snap.take_snap
+DEBUG 15:56:15 TaskSchedule.run - exec {}
+DEBUG 15:56:16 Snap.take_snap
+DEBUG 15:56:35 TaskSchedule.run - exec {}
+DEBUG 15:56:36 Snap.take_snap
+DEBUG 15:56:55 TaskSchedule.run - exec {}
+DEBUG 15:56:56 Snap.take_snap
+DEBUG 15:57:15 TaskSchedule.run - exec {}
+DEBUG 15:57:16 Snap.take_snap
+DEBUG 15:57:35 TaskSchedule.run - exec {}
+DEBUG 15:57:36 Snap.take_snap
+DEBUG 15:57:55 TaskSchedule.run - exec {}
+DEBUG 15:57:56 Snap.take_snap
+DEBUG 15:58:15 TaskSchedule.run - exec {}
+DEBUG 15:58:16 Snap.take_snap
+DEBUG 15:58:35 TaskSchedule.run - exec {}
+DEBUG 15:58:36 Snap.take_snap
+DEBUG 15:58:55 TaskSchedule.run - exec {}
+DEBUG 15:58:56 Snap.take_snap
+DEBUG 15:59:15 TaskSchedule.run - exec {}
+DEBUG 15:59:16 Snap.take_snap
+DEBUG 15:59:35 TaskSchedule.run - exec {}
+DEBUG 15:59:36 Snap.take_snap
+DEBUG 15:59:55 TaskSchedule.run - exec {}
+DEBUG 15:59:56 Snap.take_snap
+DEBUG 16:00:15 TaskSchedule.run - exec {}
+DEBUG 16:00:16 Snap.take_snap
+DEBUG 16:00:35 TaskSchedule.run - exec {}
+DEBUG 16:00:36 Snap.take_snap
+DEBUG 16:00:55 TaskSchedule.run - exec {}
+DEBUG 16:00:56 Snap.take_snap
+DEBUG 16:01:15 TaskSchedule.run - exec {}
+DEBUG 16:01:16 Snap.take_snap
+DEBUG 16:01:35 TaskSchedule.run - exec {}
+DEBUG 16:01:36 Snap.take_snap
+DEBUG 16:01:55 TaskSchedule.run - exec {}
+DEBUG 16:01:56 Snap.take_snap
+DEBUG 16:02:15 TaskSchedule.run - exec {}
+DEBUG 16:02:16 Snap.take_snap
+DEBUG 16:02:35 TaskSchedule.run - exec {}
+DEBUG 16:02:36 Snap.take_snap
+DEBUG 16:02:55 TaskSchedule.run - exec {}
+DEBUG 16:02:56 Snap.take_snap
+DEBUG 16:03:15 TaskSchedule.run - exec {}
+DEBUG 16:03:16 Snap.take_snap
+DEBUG 16:03:35 TaskSchedule.run - exec {}
+DEBUG 16:03:36 Snap.take_snap
+DEBUG 16:03:55 TaskSchedule.run - exec {}
+DEBUG 16:03:56 Snap.take_snap
+DEBUG 16:04:15 TaskSchedule.run - exec {}
+DEBUG 16:04:16 Snap.take_snap
+DEBUG 16:04:35 TaskSchedule.run - exec {}
+DEBUG 16:04:36 Snap.take_snap
+DEBUG 16:04:55 TaskSchedule.run - exec {}
+DEBUG 16:04:56 Snap.take_snap
+DEBUG 16:05:15 TaskSchedule.run - exec {}
+DEBUG 16:05:16 Snap.take_snap
+DEBUG 16:05:35 TaskSchedule.run - exec {}
+DEBUG 16:05:36 Snap.take_snap
+DEBUG 16:05:55 TaskSchedule.run - exec {}
+DEBUG 16:05:56 Snap.take_snap
+DEBUG 16:06:15 TaskSchedule.run - exec {}
+DEBUG 16:06:16 Snap.take_snap
+DEBUG 16:06:35 TaskSchedule.run - exec {}
+DEBUG 16:06:36 Snap.take_snap
+DEBUG 16:06:55 TaskSchedule.run - exec {}
+DEBUG 16:06:55 Snap.take_snap
+DEBUG 16:07:15 TaskSchedule.run - exec {}
+DEBUG 16:07:16 Snap.take_snap
+DEBUG 16:07:35 TaskSchedule.run - exec {}
+DEBUG 16:07:36 Snap.take_snap
+DEBUG 16:07:55 TaskSchedule.run - exec {}
+DEBUG 16:07:56 Snap.take_snap
+DEBUG 16:08:15 TaskSchedule.run - exec {}
+DEBUG 16:08:15 Snap.take_snap
+DEBUG 16:08:35 TaskSchedule.run - exec {}
+DEBUG 16:08:35 Snap.take_snap
+DEBUG 16:08:55 TaskSchedule.run - exec {}
+DEBUG 16:08:55 Snap.take_snap
+DEBUG 16:09:15 TaskSchedule.run - exec {}
+DEBUG 16:09:15 Snap.take_snap
+DEBUG 16:09:35 TaskSchedule.run - exec {}
+DEBUG 16:09:35 Snap.take_snap
+DEBUG 16:09:55 TaskSchedule.run - exec {}
+DEBUG 16:09:55 Snap.take_snap
+DEBUG 16:10:15 TaskSchedule.run - exec {}
+DEBUG 16:10:15 Snap.take_snap
+DEBUG 16:10:35 TaskSchedule.run - exec {}
+DEBUG 16:10:35 Snap.take_snap
+DEBUG 16:10:55 TaskSchedule.run - exec {}
+DEBUG 16:10:55 Snap.take_snap
+DEBUG 16:11:15 TaskSchedule.run - exec {}
+DEBUG 16:11:15 Snap.take_snap
+DEBUG 16:11:35 TaskSchedule.run - exec {}
+DEBUG 16:11:35 Snap.take_snap
+DEBUG 16:11:55 TaskSchedule.run - exec {}
+DEBUG 16:11:55 Snap.take_snap
+DEBUG 16:12:15 TaskSchedule.run - exec {}
+DEBUG 16:12:15 Snap.take_snap
+DEBUG 16:12:35 TaskSchedule.run - exec {}
+DEBUG 16:12:35 Snap.take_snap
+DEBUG 16:12:55 TaskSchedule.run - exec {}
+DEBUG 16:12:55 Snap.take_snap
+DEBUG 16:13:15 TaskSchedule.run - exec {}
+DEBUG 16:13:15 Snap.take_snap
+DEBUG 16:13:35 TaskSchedule.run - exec {}
+DEBUG 16:13:35 Snap.take_snap
+DEBUG 16:13:55 TaskSchedule.run - exec {}
+DEBUG 16:13:55 Snap.take_snap
+DEBUG 16:14:15 TaskSchedule.run - exec {}
+DEBUG 16:14:15 Snap.take_snap
+DEBUG 16:14:35 TaskSchedule.run - exec {}
+DEBUG 16:14:35 Snap.take_snap
+DEBUG 16:14:55 TaskSchedule.run - exec {}
+DEBUG 16:14:55 Snap.take_snap
+DEBUG 16:15:15 TaskSchedule.run - exec {}
+DEBUG 16:15:15 Snap.take_snap
+DEBUG 16:15:35 TaskSchedule.run - exec {}
+DEBUG 16:15:35 Snap.take_snap
+DEBUG 16:15:55 TaskSchedule.run - exec {}
+DEBUG 16:15:55 Snap.take_snap
+DEBUG 16:16:15 TaskSchedule.run - exec {}
+DEBUG 16:16:15 Snap.take_snap
+DEBUG 16:16:35 TaskSchedule.run - exec {}
+DEBUG 16:16:35 Snap.take_snap
+DEBUG 16:16:55 TaskSchedule.run - exec {}
+DEBUG 16:16:55 Snap.take_snap
+DEBUG 16:17:15 TaskSchedule.run - exec {}
+DEBUG 16:17:15 Snap.take_snap
+DEBUG 16:17:35 TaskSchedule.run - exec {}
+DEBUG 16:17:35 Snap.take_snap
+DEBUG 16:17:55 TaskSchedule.run - exec {}
+DEBUG 16:17:55 Snap.take_snap
+DEBUG 16:18:15 TaskSchedule.run - exec {}
+DEBUG 16:18:15 Snap.take_snap
+DEBUG 16:18:35 TaskSchedule.run - exec {}
+DEBUG 16:18:35 Snap.take_snap
+DEBUG 16:18:55 TaskSchedule.run - exec {}
+DEBUG 16:18:55 Snap.take_snap
+DEBUG 16:19:15 TaskSchedule.run - exec {}
+DEBUG 16:19:15 Snap.take_snap
+DEBUG 16:19:35 TaskSchedule.run - exec {}
+DEBUG 16:19:35 Snap.take_snap
+DEBUG 16:19:55 TaskSchedule.run - exec {}
+DEBUG 16:19:55 Snap.take_snap
+DEBUG 16:20:15 TaskSchedule.run - exec {}
+DEBUG 16:20:15 Snap.take_snap
+DEBUG 16:20:35 TaskSchedule.run - exec {}
+DEBUG 16:20:35 Snap.take_snap
+DEBUG 16:20:55 TaskSchedule.run - exec {}
+DEBUG 16:20:55 Snap.take_snap
+DEBUG 16:21:15 TaskSchedule.run - exec {}
+DEBUG 16:21:15 Snap.take_snap
+DEBUG 16:21:35 TaskSchedule.run - exec {}
+DEBUG 16:21:35 Snap.take_snap
+DEBUG 16:21:55 TaskSchedule.run - exec {}
+DEBUG 16:21:55 Snap.take_snap
+DEBUG 16:22:15 TaskSchedule.run - exec {}
+DEBUG 16:22:15 Snap.take_snap
+DEBUG 16:22:35 TaskSchedule.run - exec {}
+DEBUG 16:22:35 Snap.take_snap
